@@ -1,23 +1,24 @@
+#=============={ NAME }==============#
 NAME =		push_swap
-#============ SOURCES ============#
+#============={ SOURCES }============#
 
 INCLUDES =	./
 
-HEADERS =	push_swap.h \
+HEADERS	=	push_swap.h \
 			libft/libft.h
-LIBRARY =		libft/libft.a
+LIBRARY	=	libft/libft.a
 
 FILES = 	push_swap.c \
 
-O_FILES =	$(FILES:.c=.o)
+O_FILES	=	$(FILES:.c=.o)
 
 FLAGS =		-Wall -Wextra -Werror -O3
 G =			\033[38;2;154;205;50
 W =			\033[38;2;255;255;255
 
-#============= RULES ==============#
+#=============={ RULES }=============#
 
-all =		$(NAME)
+all	=		$(NAME)
 
 $(NAME) :	$(O_FILES) $(HEADERS)
 			@$(CC) $? $(FLAGS) -o $(NAME)
@@ -28,7 +29,7 @@ $(NAME) :	$(O_FILES) $(HEADERS)
 			@printf %s ./$(NAME) | pbcopy
 
 $(LIBRARY) :
-			make -C libft
+			make -C libft/
 
 %.o :		%.c $(HEADERS)
 			gcc $(FLAGS) -I $(INCLUDES) -c $< -o $@
