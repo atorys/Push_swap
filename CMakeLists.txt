@@ -5,4 +5,4 @@ set(CMAKE_C_STANDARD 99)
 include_directories(./)
 
 add_executable(pushswap
-        main.c)
+        main.c push_swap.h)
