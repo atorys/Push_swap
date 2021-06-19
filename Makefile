@@ -1,48 +1,55 @@
-#=============={ NAME }==============#
+#-------------------------NAME--------------------------/
 NAME =		push_swap
-#============={ SOURCES }============#
+#------------------------SOURCES------------------------/
 
 INCLUDES =	./
+VPATH =     libft \
+            files
 
 HEADERS	=	push_swap.h \
 			libft/libft.h
 LIBRARY	=	libft/libft.a
 
-FILES = 	push_swap.c \
+FILES = 	push_swap.c
+O_FILES = 	$(addprefix objects/, $(FILES:.c=.o))
 
-O_FILES	=	$(FILES:.c=.o)
+#-----------ADDITIONAL--------------------------------/
 
-FLAGS =		-Wall -Wextra -Werror -O3
-G =			\033[38;2;154;205;50
+CFLAGS =	-Wall -Wextra -Werror -O3
+BL =		\033[1m\033[32m
 W =			\033[38;2;255;255;255
 
-#=============={ RULES }=============#
+#-----------RULES-------------------------------------/
+
+.PHONY =	all	clean fclean re
+
 
 all	=		$(NAME)
 
-$(NAME) :	$(O_FILES) $(HEADERS)
-			@$(CC) $? $(FLAGS) -o $(NAME)
-			@echo ""
-			@echo "$(G);1m wwwwwwwwww  DONE!  wwwwwwwwww"
-			@echo "$(W);1m ENTER COMMAND + V AND STACK A"
-			@echo "$(G);1m wwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+$(NAME) :	$(O_FILES) $(LIBRARY)
+			@$(CC) $(FLAGS) $(O_FILES) $(LIBRARY) -o $(NAME)
 			@printf %s ./$(NAME) | pbcopy
+
+objects :
+			@mkdir $@
 
 $(LIBRARY) :
 			make -C libft/
 
-%.o :		%.c $(HEADERS)
-			gcc $(FLAGS) -I $(INCLUDES) -c $< -o $@
+objects/%.o :	%.c $(HEADERS)
+			    gcc $(FLAGS) -I $(INCLUDES) -c $< -o $@
+
+
+#-------CLEAN
 
 clean :
-			@rm -f $(O_FILES)
+			@rm -rf objects/
 			@make clean -C libft/
 
 fclean :	clean
 			@rm -f $(NAME)
 			@make fclean -C libft/
 
-re :
-			flean all
+re :        fclean all
 
 .PHONY =	all clean fclean re
