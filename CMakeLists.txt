@@ -5,4 +5,10 @@ set(CMAKE_C_STANDARD 99)
 include_directories(./)
 
 add_executable(pushswap
-        main.c push_swap.h)
+        files/push_swap.c
+        push_swap.h
+        libft/ft_atoi.c
+        libft/ft_putstr_fd.c
+        libft/ft_putchar_fd.c
+        files/utils.c
+        files/swap_a.c)

@@ -6,8 +6,11 @@
 
 typedef struct	s_stack
 {
-	int 			val;
-	struct t_stack	*next;
+	int 			value;
+	struct s_stack	*next;
 }				t_stack;
+
+void	error_case(char *message, int number);
+int		valid_args(int argc, char *argv[]);
 
 #endif
