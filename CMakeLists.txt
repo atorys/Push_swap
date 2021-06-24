@@ -10,5 +10,6 @@ add_executable(pushswap
         libft/ft_atoi.c
         libft/ft_putstr_fd.c
         libft/ft_putchar_fd.c
+        libft/ft_isdigit.c
         files/utils.c
-        files/swap_a.c)
+        files/swap_a.c files/stack_utils.c)

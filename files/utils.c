@@ -7,17 +7,31 @@ void	error_case(char *message, int number)
 	exit(number);
 }
 
-int valid_args(int argc, char *argv[])
+int	valid_args(int argc, char *argv[])
 {
-	int flag;
-	int digit;
+	int	flag;
 	int	i;
+	int	j;
 
-	flag = 0;
+	flag = argc - 2;
 	i = 0;
 	while (argc-- > 1)
 	{
-		digit = ft_atoi(argv[++i]);
+		i++;
+		j = -1;
+		while (argv[i][++j])
+		{
+			if (j == 0 && argv[i][j] == '-')
+				continue ;
+			else if (!ft_isdigit(argv[i][j]))
+				return (-1);
+		}
+		if (argc > 1 && ft_atoi(argv[i]) < ft_atoi(argv[i + 1]))
+			flag--;
+		j = 0;
+		while (++j < i)
+			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
+				return (-1);
 	}
-	return (0);
+	return (flag != 0);
 }
