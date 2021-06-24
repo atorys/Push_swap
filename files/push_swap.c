@@ -22,7 +22,6 @@ int main(int argc, char *argv[])
 			printf("next -> %5d ]\n", a->next->value);
 		else
 			printf("next -> %5s ]\n", "NULL");
-//		printf("\n");
 		a = a->next;
 	}
 }
