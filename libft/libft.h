@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
+//# include <unistd.h> /** todo: delete comment brackets */
 # include <ctype.h>
 
 typedef struct s_list
