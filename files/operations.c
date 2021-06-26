@@ -2,13 +2,13 @@
 
 /**
  * swap first two elements at the top of stack A
- * before	:	[3]	[2]	1
- * after	:	[2]	[3]	1
- * @param a
+ * @example before	:	[3]	[2]	1
+ * @example after	:	[2]	[3]	1
+ * @param  A : given stack
  */
 void	swap_s(t_stack **a)
 {
-	t_stack *second;
+	t_stack	*second;
 
 	second = (*a)->next;
 	if (*a && (*a)->next)
@@ -16,7 +16,8 @@ void	swap_s(t_stack **a)
 		(*a)->prev = second;
 		(*a)->next = second->next;
 		second->prev = NULL;
-		second->next->prev = *a;
+		if (second->next)
+			second->next->prev = *a;
 		second->next = *a;
 		*a = second;
 	}
@@ -24,13 +25,13 @@ void	swap_s(t_stack **a)
 
 /**
  * first element of stack A becomes last one.
- * before	:  [3]	2	1
- * after	:	2	1  [3]
+ * @example before	:  [3]	2	1
+ * @example after	:	2	1  [3]
  * @param A : given stack
  */
 void	rotate_s(t_stack **a)
 {
-	t_stack *last;
+	t_stack	*last;
 
 	last = *a;
 	if (*a && (*a)->next)
@@ -47,39 +48,57 @@ void	rotate_s(t_stack **a)
 
 /**
  * last element of stack A becomes first one.
- * before	:	3	2  [1]
- * after	:  [1]	3	2
+ * @example before	:	3	2  [1]
+ * @example after	:  [1]	3	2
  * @param A : given stack
  */
 void	reverse_rotate_s(t_stack **a)
 {
-	t_stack *last;
+	t_stack	*last;
 
+	if (!(*a))
+		return ;
 	last = *a;
-	if (*a)
-	{
-		while (last->next != NULL)
-			last = last->next; /** find last elem*/
-		last->next = *a;	/** link it with first one*/
-		(*a)->prev = last;	/** put last before first in stack*/
-		*a = (*a)->prev;	/** move head pointer to previous*/
-		last->prev->next = NULL;	/** remove link from last element*/
-		last->prev = NULL;	/** remove link to pre-last elem from head*/
-	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = *a;
+	(*a)->prev = last;
+	*a = (*a)->prev;
+	last->prev->next = NULL;
+	last->prev = NULL;
 }
 
+/**
+ * take first element at the top of "src" and put at the top of "dest"
+ * @example push a : B->A
+ * @example A | 2 1 ---> 7 2 1 |
+ * @example B | 7 5 6 ---> 5 6 |  @example
+ * @example push b : A->B
+ * @example A | 2 1 ---> 1 |
+ * @example B | 7 5 6 ---> 2 7 5 6|
+ * @param src: stack source
+ * @param dest: stack destination
+ */
 void	push_s(t_stack **src, t_stack **dest)
 {
-	if (*src)
+	if (!(*src))
+		return ;
+	if (!(*dest))
 	{
-		if (!(*dest))
-			*dest = *src;
-		else
-		{
-			(*dest)->prev = *src;
-			*dest = (*dest)->prev;
-		}
+		*dest = *src;
 		*src = (*src)->next;
-		(*src)->prev = NULL;
+		if (*src)
+			(*src)->prev = NULL;
+		(*dest)->next = NULL;
 	}
+	else
+	{
+		(*dest)->prev = *src;
+		*src = (*src)->next;
+		if (*src)
+			(*src)->prev = NULL;
+		(*dest)->prev->next = *dest;
+		*dest = (*dest)->prev;
+	}
+	(*dest)->prev = NULL;
 }

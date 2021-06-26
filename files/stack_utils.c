@@ -7,23 +7,23 @@ t_stack	*create_elem(int digit)
 
 	new = NULL;
 	new = malloc(sizeof(t_stack));
-	if (!new) /** todo: protect malloc */
-		error_case("\033[0;33mMalloc failed", -1);
+	if (!new)
+		return (NULL);
 	new->value = digit;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
 }
 
-void	add_back(t_stack **a, t_stack *new)
+void	add_back(t_stack **head, t_stack *new)
 {
 	t_stack	*temp;
 
-	if (*a == NULL)
-		*a = new;
+	if (*head == NULL)
+		*head = new;
 	else
 	{
-		temp = (*a);
+		temp = (*head);
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
@@ -31,11 +31,32 @@ void	add_back(t_stack **a, t_stack *new)
 	}
 }
 
-void	form_stack(t_stack **pointer, int argc, char *argv[])
+void 	form_stack(t_stack **head, int argc, char *argv[])
 {
-	int	i;
+	int		i;
+	t_stack *node;
 
 	i = 0;
 	while (argc-- > 1)
-		add_back(pointer, create_elem(ft_atoi(argv[++i])));
+	{
+		node = create_elem((int)ft_atoi(argv[++i]));
+		if (!node)
+			; /** todo: make free*/
+		add_back(head, node);
+	}
+}
+
+int node_count(t_stack *head)
+{
+	t_stack	*temp;
+	int	nodes;
+
+	temp = head;
+	nodes = 0;
+	while (temp)
+	{
+		temp = temp->next;
+		nodes++;
+	}
+	return (nodes);
 }

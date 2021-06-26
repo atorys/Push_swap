@@ -8,8 +8,13 @@ add_executable(pushswap
         files/push_swap.c
         push_swap.h
         libft/ft_atoi.c
+        libft/ft_strdup.c
+        libft/ft_strjoin.c
+        libft/ft_strlen.c
         libft/ft_putstr_fd.c
         libft/ft_putchar_fd.c
         libft/ft_isdigit.c
         files/utils.c
-        files/swap_a.c files/stack_utils.c files/operations.c)
+        files/stack_utils.c
+        files/operations.c
+        files/double_operations.c)
