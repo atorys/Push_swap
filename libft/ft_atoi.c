@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	digit;
 	int		flag;
@@ -30,12 +30,8 @@ int	ft_atoi(const char *str)
 	}
 	while (*str >= '0' && *str <= '9' && *str)
 	{
-//		if (digit * flag > 2147483647)
-//			return (0); /** todo: как учитывать переполнение инта? */
-//		if (digit * flag < -2147483648)
-//			return (0);
 		digit = (digit * 10) + (*str - '0');
 		str++;
 	}
-	return (flag * (int)digit);
+	return (flag * digit);
 }

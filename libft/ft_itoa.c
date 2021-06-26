@@ -56,10 +56,8 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	str = malloc(sizeof(char) * ft_len((long)n) + 1);
-	if (str)
-	{
-		ft_addtostr(str, (long)n);
-		return (str);
-	}
-	return (NULL);
+	if (!str)
+		return (NULL);
+	ft_addtostr(str, (long)n);
+	return (str);
 }
