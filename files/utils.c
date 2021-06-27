@@ -60,7 +60,7 @@ int	valid_args(int argc, char *argv[])
 			flag--;
 		j = 0;
 		while (++j < i)
-			if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648 || ft_atoi(argv[j]) == ft_atoi(argv[i]))
+			if ( ft_atoi(argv[j]) == ft_atoi(argv[i])) /** todo: int max min*/
 				return (-1);
 	}
 	return (flag != 0);

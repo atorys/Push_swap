@@ -4,7 +4,7 @@
 
 void pick_up_algorithm(t_info *process)
 {
-	printf("nodecount = %d", node_count(process->head_a));
+	printf("nodecount = %d\n", node_count(process->head_a));
 	if (node_count(process->head_a) == 2)
 	{
 		swap_s(&process->head_a);
@@ -12,32 +12,29 @@ void pick_up_algorithm(t_info *process)
 	}
 	if (node_count(process->head_a) == 3)
 	{
-		if (process->head_a > process->head_a->next)
+		if (process->head_a->next->value > process->head_a->next->next->value) /** 321 132 231*/
 		{
-			if (process->head_a->next > process->head_a->next->next)
+			if (process->head_a->value > process->head_a->next->next->value)
 			{
 				rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "ra\n");
 			}
-			if (process->head_a < process->head_a->next->next)
-			{
-				swap_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "sa\n");
-			}
-			if (process->head_a > process->head_a->next->next)
+			else
 			{
 				reverse_rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "rra\n");
 			}
 		}
-		if (process->head_a < process->head_a->next)
+		if (process->head_a->value > process->head_a->next->value && \
+			!(process->head_a->value < process->head_a->next->value && \
+			process->head_a->next->value < process->head_a->next->next->value)) /** 213 312*/
 		{
-			if (process->head_a->next > process->head_a->next->next)
+			if (process->head_a->value > process->head_a->next->next->value)
 			{
-				reverse_rotate_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "rra\n");
+				rotate_s(&process->head_a);
+				process->commands = ft_strjoin(process->commands, "ra\n");
 			}
-			if (process->head_a < process->head_a->next->next)
+			else
 			{
 				swap_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "sa\n");
