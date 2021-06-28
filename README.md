@@ -1,8 +1,7 @@
 # Push_swap
 
 ## Operations
-**A:** **B:**
-
+**A:**
   5
   
   1
