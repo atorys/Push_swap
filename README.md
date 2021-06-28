@@ -1,12 +1,8 @@
 # Push_swap
 
 ## Operations
-> **A**  5 1 3 4 2
-5  
-1  
-3  
-4  
-2
+> **A:**  5 1 3 4 2
+> **B:** is empty
 
 
 ### **swap a / swap b:**  
