@@ -4,7 +4,7 @@
 
 ## Operations
 > **A:**  ­­­ ５  ­ １ ­ ３ ­ ４ ­ ２  
-> **B:** is empty
+> **B:**  ­­­ is empty
 
 
 ### **swap a / swap b:**  
