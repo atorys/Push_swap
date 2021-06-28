@@ -58,8 +58,7 @@ swap first two elements at the top of choosen stack
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
-    </table>
-     <table>
+    </table><table>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
