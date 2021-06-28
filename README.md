@@ -52,22 +52,23 @@ swap first two elements at the top of choosen stack
 | 2 | 5 | | 3 | 6 | 
 |   | 6   | | 4 | 
 
+<html>
+<head>
 <style type="text/css">
 table.t1
 {
    display: inline;
 }
 </style>
- <table class="t1">
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-    </table><table class="t1">
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-      <tr><td> A </td><td> B </td></tr>
-    </table>
+</head>
+<body>
+<table class="t1">
+  <tr><td>1</td><td>2</td></tr>
+  <tr colspan="2"><td>3</td></tr>
+</table>
+<table class="t1">
+  <tr><td>5</td><td>6</td></tr>
+  <tr colspan="2"><td>7</td></tr>
+</table>
+</body>
+</html>
