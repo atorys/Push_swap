@@ -2,9 +2,11 @@
 
 ## Operations
 **A  B**  
-5  
-1  
-3  
+5 | e  
+1 | m  
+3 | p  
+4 | t  
+2 | y  
 
 **B: is empty**
 
