@@ -2,8 +2,7 @@
 
 ## Operations
 
-#### sa: ####
-swap first two elements at the top of stack A
+### **sa:** ### swap first two elements at the top of stack A
 | A | A' |
 |:----:|:----:|
 | 3 | 2 |
