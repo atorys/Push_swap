@@ -52,13 +52,17 @@ swap first two elements at the top of choosen stack
 | 2 | 5 | | 3 | 6 | 
 |   | 6   | | 4 | 
 
- <table>
+table.t1
+{
+   display: inline;
+}
+ <table class="t1">
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
-    </table><table>
+    </table><table class="t1">
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
       <tr><td> A </td><td> B </td></tr>
