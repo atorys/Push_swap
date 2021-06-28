@@ -1,7 +1,9 @@
 # Push_swap
 
 ## Operations
-**A: 3 2 1 4 5** \n
+**A:**
+①
+
 **B: is empty**
 
 ### **sa/sb:** swap first two elements at the top of choosen stack
