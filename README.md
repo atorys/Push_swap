@@ -9,15 +9,12 @@
                   <td>
                        A
                   </td>
-            </tr>
-            <tr>
                   <td>
-                        A  sa
-                        -----
-                        3 | 2
-                        2 | 3
-                        1 | 1
-                  </td>      
+                        sa
+                  <\td>
             </tr>
+            <tr> <td>3</td> <td>2</td> </tr>
+            <tr> <td>2</td> <td>3</td> </tr
+            <tr> <td>1</td> <td>1</td> </tr>
       </table>
 </div>
