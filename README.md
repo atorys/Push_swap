@@ -2,11 +2,16 @@
 
 ## Operations
 
-### **sa:** swap first two elements at the top of stack A
+### **sa/sb:** swap first two elements at the top of choosen stack
 | A | A' |
 |:----:|:----:|
 | `3` | `2` |
 | `2` | `3` | 
 | 1 | 1 |
 
-### **sb** ###
+### **ss** 
+|    A | A'   || B    | B'   |
+|:----:|:----:||:----:|:----:|
+| `3` | `2` |
+| `2` | `3` | 
+| 1   | 1   |
