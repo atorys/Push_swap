@@ -4,9 +4,10 @@
 
 <div>
       <table>
+             **sa:**
             <tr>
                   <td>
-                        **sa:** swap first two elements at the top of stack A
+                       A
                   </td>
             </tr>
             <tr>
