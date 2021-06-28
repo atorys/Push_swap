@@ -2,7 +2,9 @@
 
 ## Operations
 **A:**
-5 1 2 4 3
+  5
+  1
+  3
 
 **B: is empty**
 
