@@ -3,16 +3,16 @@
 ０ １ ２ ３ ４ ５ ６ 
 
 ## Operations
-> **A:**  ­ 5  ­ 1 ­ 3 | 4 | 2  
+> **A:**  ­ 5  ­ 1 ­ 3 ­ 4 ­ 2  
 > **B:** is empty
 
 
 ### **swap a / swap b:**  
 swap first two elements at the top of choosen stack  
-> **A:** `1` | `5` | 3 | 4 | 2  
+> **A:** `1` ­ `5` ­ 3 ­ 4 ­ 2  
 
 ### push b:
-> **A:**  `⮦` | 5 | 3 | 4 | 2  
+> **A:**  `⮦` ­ 5 ­ 3 ­ 4 ­ 2  
 > **B:**  `１`
 
 **A:**
