@@ -2,11 +2,11 @@
 
 ## Operations
 
-### **sa:** ### swap first two elements at the top of stack A
+### **sa:** swap first two elements at the top of stack A
 | A | A' |
 |:----:|:----:|
-| 3 | 2 |
-| 2 | 3 | 
+| `3` | `2` |
+| `2` | `3` | 
 | 1 | 1 |
 
 ### **sb** ###
