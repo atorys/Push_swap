@@ -2,14 +2,20 @@
 
 ## Operations
 **A  B**  
-5 |  
-1 |  
-3 |  
-4 |  
-2 |  
+5  
+1  
+3  
+4  
+2
 
-### **sa/sb:** 
+### **swap a / swap b:** 
 swap first two elements at the top of choosen stack
+**A  B**  
+`1`  
+`5` 
+3  
+4  
+2
 
 **A:**
 `1` `5`2 4 3
