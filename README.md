@@ -14,7 +14,7 @@ swap first two elements at the top of choosen stack
 **A:** `1`  `5`  3  4  2  
 
 ### push a:
-**A** **B**  
+**A**	**B**  
 5 | 3  
 1 | 4  
 2 |  
