@@ -12,7 +12,7 @@ swap first two elements at the top of choosen stack
 > **A:** `1` | `5` | 3 | 4 | 2  
 
 ### push b:
-> **A:**  `𝟙` | 5 | 3 | 4 | 2  
+> **A:**  `⓵` | 5 | 3 | 4 | 2  
 > **B:**  `１`
 
 **A:**
