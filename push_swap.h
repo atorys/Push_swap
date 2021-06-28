@@ -30,19 +30,21 @@ typedef struct s_stack
 typedef struct s_info
 {
 	char			*commands;
+	int 			*sorted;
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
 }				t_info;
 
 void	error_case(char *message, int number);
 int		valid_args(int argc, char *argv[]);
+
 t_info	*init_process(int argc, char *argv[]);
 
 t_stack	*create_elem(int digit);
 void	add_back(t_stack **head, t_stack *new);
 void	form_stack(t_stack **head, int argc, char *argv[]);
-int 	node_count(t_stack *head);
 
+int 	node_count(t_stack *head);
 
 void	swap_s(t_stack **a);
 void	rotate_s(t_stack **a);

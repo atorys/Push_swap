@@ -17,4 +17,4 @@ add_executable(pushswap
         files/utils.c
         files/stack_utils.c
         files/operations.c
-        files/double_operations.c)
+        files/double_operations.c files/algorithm/array.c)

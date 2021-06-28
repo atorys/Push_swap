@@ -25,7 +25,7 @@ t_info *init_process(int argc, char *argv[])
 		return (NULL);
 	process->head_a = NULL;
 	process->head_b = NULL;
-	form_stack(&(process->head_a), argc, argv);
+	form_stack(&(process->head_a), argc, argv); /** todo: node wasn't allocated*/
 	return (process);
 }
 

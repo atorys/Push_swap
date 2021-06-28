@@ -4,7 +4,6 @@
 
 void pick_up_algorithm(t_info *process)
 {
-	printf("nodecount = %d\n", node_count(process->head_a));
 	if (node_count(process->head_a) == 2)
 	{
 		swap_s(&process->head_a);
@@ -41,6 +40,8 @@ void pick_up_algorithm(t_info *process)
 			}
 		}
 	}
+	else
+		huge_sort(process);
 }
 
 int main(int argc, char *argv[])
@@ -53,41 +54,41 @@ int main(int argc, char *argv[])
 		exit(0);
 	if (valid_args(argc, argv) == -1)
 		error_case(ERROR, -1);
-	process = init_process(argc, argv);
+	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
 	a = process->head_a;
-	printf("A: \n");
+	b = process->head_b;
+	printf("\nA: ");
 	while (a)
 	{
-		if (a->prev)
-			printf("|%5d <- ", a->prev->value);
-		else
-			printf("|%5s <- ", "NULL");
-		printf("%2d ->", a->value);
-		if (a->next)
-			printf("%5d | \n", a->next->value);
-		else
-			printf("%5s |\n", "NULL");
+		printf("%-2d| ", a->value);
 		a = a->next;
 	}
+	printf("\nB: ");
+	while (b)
+	{
+		printf("%-2d| ", b->value);
+		b = b->next;
+	}
+	printf("\n");
 	pick_up_algorithm(process);
-	a = process->head_a;
-	printf("A: \n");
-	while (a)
-	{
-		if (a->prev)
-			printf("|%5d <- ", a->prev->value);
-		else
-			printf("|%5s <- ", "NULL");
-		printf("%2d ->", a->value);
-		if (a->next)
-			printf("%5d | \n", a->next->value);
-		else
-			printf("%5s |\n", "NULL");
-		a = a->next;
-	}
 	printf("%s", process->commands);
+//	a = process->head_a;
+//	printf("A: ");
+//	while (a)
+//	{
+//		if (a->prev)
+//			printf("|%5d <- ", a->prev->value);
+//		else
+//			printf("|%5s <- ", "NULL");
+//		printf("%2d ->", a->value);
+//		if (a->next)
+//			printf("%5d | \n", a->next->value);
+//		else
+//			printf("%5s |\n", "NULL");
+//		a = a->next;
+//	}
 //	printf("\n B: \n");
 //	for (int i = 0; i < 3; i++) {
 //		push_s(&a1, &b); /** push B */
