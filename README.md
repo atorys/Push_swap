@@ -5,7 +5,7 @@
 ### **sa:** swap first two elements at the top of stack A ###
 &#9312;
 
-| A | A' | |
+| A | A' |
 |:----:|:----:|
 | 3 | 2 |
 | 2 | 3 | 
