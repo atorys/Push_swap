@@ -2,7 +2,6 @@
 
 ## Operations
 **A:**
-
   5
   1
   3
