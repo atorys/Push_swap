@@ -51,3 +51,18 @@ swap first two elements at the top of choosen stack
 | 3 | `4` | | `4` | 5 |
 | 2 | 5 | | 3 | 6 | 
 |   | 6   | | 4 | 
+
+ <table>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+    </table>
+     <table>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+      <tr><td> A </td><td> B </td></tr>
+    </table>
