@@ -2,13 +2,13 @@
 
 ## Operations
 **A:**
-➄➁➀➃➂
+5 1 2 4 3
 
 **B: is empty**
 
 ### **sa/sb:** swap first two elements at the top of choosen stack
 **A:**
-➋➎➀➃➂
+`1``5`2 4 3
 
 | A | A' |
 |:----:|:----:|
