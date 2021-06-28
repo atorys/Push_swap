@@ -1,5 +1,7 @@
 # Push_swap
 
+０ １ ２ ３ ４ ５ ６ 
+
 ## Operations
 > **A:**  5  | 1 | 3 | 4 | 2  
 > **B:** is empty
@@ -10,8 +12,8 @@ swap first two elements at the top of choosen stack
 > **A:** `1` | `5` | 3 | 4 | 2  
 
 ### push b:
-> **A:**  `１` | 5 | 3 | 4 | 2  
-> **B:**  `1`
+> **A:**  `𝟙` | 5 | 3 | 4 | 2  
+> **B:**  `１`
 
 **A:**
 `1` `5`2 4 3
