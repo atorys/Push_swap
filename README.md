@@ -2,8 +2,7 @@
 
 ## Operations
 **A:**
-①
-
+➄➁➀➃➂
 **B: is empty**
 
 ### **sa/sb:** swap first two elements at the top of choosen stack
