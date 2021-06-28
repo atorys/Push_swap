@@ -1,8 +1,8 @@
 # Push_swap
 
-# Operations
+## Operations
 
-**sa:** swap first two elements at the top of stack A
+### **sa:** swap first two elements at the top of stack A ###
 &#9312;
 
 | A | A' | |
@@ -11,4 +11,4 @@
 | 2 | 3 | 
 | 1 | 1 |
 
-**sb**
+### **sb** ###
