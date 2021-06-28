@@ -1,14 +1,12 @@
 # Push_swap
 
 ## Operations
-**A | B**  
-5 | e  
-1 | m  
-3 | p  
-4 | t  
-2 | y  
-
-**B: is empty**
+**A_B**  
+5 |  
+1 |  
+3 |  
+4 |  
+2 |  
 
 ### **sa/sb:** 
 swap first two elements at the top of choosen stack
