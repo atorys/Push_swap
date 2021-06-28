@@ -1,7 +1,10 @@
 # Push_swap
 
 ## Operations
-**A:**   5   1   3
+**A:**  
+5  
+1  
+3  
 
 **B: is empty**
 
