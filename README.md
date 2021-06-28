@@ -12,9 +12,9 @@ swap first two elements at the top of choosen stack
 > **A:** `１ ⥂ ５` ­ ３ ­ ４ ­ ２  
 
 ### push b:
-> **A:**  `...` ５ ­ ３ ­ ４ ­２  
+> **A:**  `..` ５ ­ ３ ­ ４ ­２  
 > **B:**  `１`
 
 ### rotate a
-> **A:** `５` ­ ３ ­ ４ ­ ２ 
+> **A:** `５` ­ ３ ­ ４ ­ ２  
 >         -------------------⬏
