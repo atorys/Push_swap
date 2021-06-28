@@ -1,7 +1,7 @@
 # Push_swap
 
 ## Operations
-**A  B**  
+**A** > 5 1 3 4 2
 5  
 1  
 3  
