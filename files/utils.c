@@ -12,6 +12,26 @@ void	error_case(char *message, int number)
 	exit(number);
 }
 
+void free_struct(t_stack **node)
+{
+	t_stack *temp;
+	t_stack *being_freed;
+
+	if ((*node)->prev)
+	{
+		while ((*node)->prev)
+			*node = (*node)->prev;
+	}
+	temp = *node;
+	while (temp)
+	{
+		being_freed = temp;
+		free(being_freed);
+		temp = temp->next;
+	}
+	*node = NULL;
+}
+
 /**
  * check input arguments : doubles & invalid symbols & sorted
  * @param argc : count of values
@@ -22,12 +42,25 @@ void	error_case(char *message, int number)
  */
 int	valid_args(int argc, char *argv[])
 {
-	int	flag;
-	int	i;
-	int	j;
+	char 	**arg;
+	int		flag;
+	int		i;
+	int		j;
 
 	flag = argc - 2;
 	i = 0;
+	while (argc-- > 1)
+	{
+		i++;
+		arg = ft_split(argv[i], ' ');
+		if (!*arg || !arg[0])
+			return (-1);
+
+	}
+
+
+
+
 	while (argc-- > 1)
 	{
 		i++;

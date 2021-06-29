@@ -18,7 +18,7 @@ typedef struct s_stack
 {
 	int				value;
 	int 			index;
-	int 			keep;
+	int 			pos;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;

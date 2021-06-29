@@ -17,7 +17,7 @@ static t_stack	*create_elem(int digit)
 		return (NULL);
 	new->value = digit;
 	new->index = -1;
-	new->keep = 1;
+	new->pos = -1;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);
@@ -80,6 +80,15 @@ static void indexing(t_stack **head, int argc)
 		while (temp->value != max)
 			temp = temp->next;
 		temp->index = i;
+	}
+	i = 0;
+	temp = *head;
+	while (temp)
+	{
+		temp->pos = i++;
+		if (!temp->next)
+			temp->pos = -1;
+		temp = temp->next;
 	}
 }
 
