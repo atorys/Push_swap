@@ -33,5 +33,7 @@ long	ft_atoi(const char *str)
 		digit = (digit * 10) + (*str - '0');
 		str++;
 	}
+//	if (flag * digit > 2147483647 || flag * digit < -2147483648)
+//		return (NULL); /** todo: ?????*/
 	return (flag * digit);
 }

@@ -4,13 +4,20 @@ NAME =		push_swap
 
 INCLUDES =	./
 VPATH =     libft \
-            files
+			files \
+            files/algorithm \
+            files/stack_manipulations
 
 HEADERS	=	push_swap.h \
 			libft/libft.h
 LIBRARY	=	libft/libft.a
 
-FILES = 	push_swap.c
+FILES = 	push_swap.c \
+			operations.c \
+			double_operations.c \
+			forming.c \
+			tools.c \
+			utils.c
 O_FILES = 	$(addprefix objects/, $(FILES:.c=.o))
 
 #-----------ADDITIONAL--------------------------------/
@@ -26,7 +33,7 @@ W =			\033[38;2;255;255;255
 
 all	=		$(NAME)
 
-$(NAME) :	$(O_FILES) $(LIBRARY)
+$(NAME) :	objects $(O_FILES) $(LIBRARY)
 			@$(CC) $(FLAGS) $(O_FILES) $(LIBRARY) -o $(NAME)
 			@printf %s ./$(NAME) | pbcopy
 

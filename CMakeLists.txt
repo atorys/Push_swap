@@ -15,6 +15,6 @@ add_executable(pushswap
         libft/ft_putchar_fd.c
         libft/ft_isdigit.c
         files/utils.c
-        files/stack_utils.c
-        files/operations.c
-        files/double_operations.c files/algorithm/array.c)
+        files/stack_manipulations/forming.c
+        files/stack_manipulations/operations.c
+        files/stack_manipulations/double_operations.c files/algorithm/sort.c files/stack_manipulations/tools.c)

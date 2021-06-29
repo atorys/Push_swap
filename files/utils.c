@@ -12,23 +12,6 @@ void	error_case(char *message, int number)
 	exit(number);
 }
 
-t_info *init_process(int argc, char *argv[])
-{
-	t_info	*process;
-
-	process = NULL;
-	process = malloc(sizeof(t_info));
-	if (!process)
-		return (NULL);
-	process->commands = ft_strdup("");
-	if (!process->commands)
-		return (NULL);
-	process->head_a = NULL;
-	process->head_b = NULL;
-	form_stack(&(process->head_a), argc, argv); /** todo: node wasn't allocated*/
-	return (process);
-}
-
 /**
  * check input arguments : doubles & invalid symbols & sorted
  * @param argc : count of values
@@ -60,7 +43,7 @@ int	valid_args(int argc, char *argv[])
 			flag--;
 		j = 0;
 		while (++j < i)
-			if ( ft_atoi(argv[j]) == ft_atoi(argv[i])) /** todo: int max min*/
+			if (ft_atoi(argv[j]) == ft_atoi(argv[i])) /** todo: int max min*/
 				return (-1);
 	}
 	return (flag != 0);

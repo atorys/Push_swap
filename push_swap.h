@@ -9,14 +9,16 @@
 /**
  * prototype for node of doubly linked list
  * @fields value : integer
+ * @fields index : index in sorted array
  * @fields next : pointer to next node
  * @fields prev : pointer to previous node
- * @prototype +-{head}-> {head.next}-> {head.next.next}-> ... -> [NULL]
- * @prototype +-> [NULL]
+ * @prototype prev | value | [index] | next
  */
 typedef struct s_stack
 {
 	int				value;
+	int 			index;
+	int 			keep;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;
@@ -30,7 +32,6 @@ typedef struct s_stack
 typedef struct s_info
 {
 	char			*commands;
-	int 			*sorted;
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
 }				t_info;
@@ -39,10 +40,7 @@ void	error_case(char *message, int number);
 int		valid_args(int argc, char *argv[]);
 
 t_info	*init_process(int argc, char *argv[]);
-
-t_stack	*create_elem(int digit);
-void	add_back(t_stack **head, t_stack *new);
-void	form_stack(t_stack **head, int argc, char *argv[]);
+void	huge_sort(t_info	*process);
 
 int 	node_count(t_stack *head);
 

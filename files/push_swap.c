@@ -13,12 +13,13 @@ void pick_up_algorithm(t_info *process)
 	{
 		if (process->head_a->next->value > process->head_a->next->next->value) /** 321 132 231*/
 		{
-			if (process->head_a->value > process->head_a->next->next->value)
+			if (process->head_a->value > process->head_a->next->next->value && \
+			process->head_a->value > process->head_a->next->value)
 			{
 				rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "ra\n");
 			}
-			else
+			if (process->head_a->value < process->head_a->next->value)
 			{
 				reverse_rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "rra\n");
@@ -40,8 +41,8 @@ void pick_up_algorithm(t_info *process)
 			}
 		}
 	}
-	else
-		huge_sort(process);
+//	else
+//		huge_sort(process);
 }
 
 int main(int argc, char *argv[])
@@ -57,23 +58,40 @@ int main(int argc, char *argv[])
 	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
-	a = process->head_a;
-	b = process->head_b;
-	printf("\nA: ");
-	while (a)
-	{
-		printf("%-2d| ", a->value);
-		a = a->next;
-	}
-	printf("\nB: ");
-	while (b)
-	{
-		printf("%-2d| ", b->value);
-		b = b->next;
-	}
-	printf("\n");
+//	a = process->head_a;
+//	b = process->head_b;
+//	printf("\nA: ");
+//	while (a)
+//	{
+//		printf("%-2d| ", a->value);
+//		a = a->next;
+//	}
+//	printf("\nB: ");
+//	while (b)
+//	{
+//		printf("%-2d| ", b->value);
+//		b = b->next;
+//	}
+//	printf("\n");
 	pick_up_algorithm(process);
 	printf("%s", process->commands);
+//
+//	a = process->head_a;
+//	b = process->head_b;
+//	printf("\nA: ");
+//	while (a)
+//	{
+//		printf("%-2d| ", a->value);
+//		a = a->next;
+//	}
+//	printf("\nB: ");
+//	while (b)
+//	{
+//		printf("%-2d| ", b->value);
+//		b = b->next;
+//	}
+//	printf("\n");
+
 //	a = process->head_a;
 //	printf("A: ");
 //	while (a)
