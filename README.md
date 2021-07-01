@@ -9,7 +9,7 @@
 
 ### **swap a / swap b:**  
 swap first two elements at the top of choosen stack  
-> **A:** `５ ⥂ １` ­ ３ ­ ４ ­ ２  
+> **A:** `５⥂１` ­ ３ ­ ４ ­ ２  
 > **SA** １ ­ ５ ­ ３ ­ ４ ­ ２  
 
 ### push b:
