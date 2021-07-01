@@ -53,9 +53,7 @@ static char	*writeln(char **array, char const *s, size_t k, unsigned int j)
 
 	line = ft_substr(s, j, k);
 	if (!line)
-	{
 		return (ft_free(array));
-	}
 	return (line);
 }
 

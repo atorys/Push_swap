@@ -13,6 +13,7 @@ HEADERS	=	push_swap.h \
 LIBRARY	=	libft/libft.a
 
 FILES = 	push_swap.c \
+			input_checker.c \
 			operations.c \
 			double_operations.c \
 			forming.c \
@@ -57,6 +58,6 @@ fclean :	clean
 			@rm -f $(NAME)
 			@make fclean -C libft/
 
-re :        fclean all
+re :        fclean $(NAME)
 
 .PHONY =	all clean fclean re

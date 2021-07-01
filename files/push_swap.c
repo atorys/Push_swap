@@ -12,13 +12,13 @@ void visual(t_info *process)
 	printf("\nA: ");
 	while (a)
 	{
-		printf("%-2d(%-2d)| ", a->value, a->pos);
+		printf("%-2d| ", a->pos);
 		a = a->next;
 	}
 	printf("\nB: ");
 	while (b)
 	{
-		printf("%-2d(%-2d)| ", b->value, b->pos);
+		printf("%-2d| ", b->pos);
 		b = b->next;
 	}
 	printf("\n");
@@ -49,25 +49,25 @@ void pick_up_algorithm(t_info *process)
 	}
 	if (node_count(process->head_a) == 3)
 	{
-		if (process->head_a->next->value > process->head_a->next->next->value) /** 321 132 231*/
+		if (process->head_a->next->pos > process->head_a->next->next->pos) /** 321 132 231*/
 		{
-			if (process->head_a->value > process->head_a->next->next->value && \
-			process->head_a->value > process->head_a->next->value)
+			if (process->head_a->pos > process->head_a->next->next->pos && \
+			process->head_a->pos > process->head_a->next->pos)
 			{
 				rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "ra\n");
 			}
-			if (process->head_a->value < process->head_a->next->value)
+			if (process->head_a->pos < process->head_a->next->pos)
 			{
 				reverse_rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "rra\n");
 			}
 		}
-		if (process->head_a->value > process->head_a->next->value && \
-			!(process->head_a->value < process->head_a->next->value && \
-			process->head_a->next->value < process->head_a->next->next->value)) /** 213 312*/
+		if (process->head_a->pos > process->head_a->next->pos && \
+			!(process->head_a->pos < process->head_a->next->pos && \
+			process->head_a->next->pos < process->head_a->next->next->pos)) /** 213 312*/
 		{
-			if (process->head_a->value > process->head_a->next->next->value)
+			if (process->head_a->pos > process->head_a->next->next->pos)
 			{
 				rotate_s(&process->head_a);
 				process->commands = ft_strjoin(process->commands, "ra\n");
@@ -79,8 +79,8 @@ void pick_up_algorithm(t_info *process)
 			}
 		}
 	}
-	else
-		huge_sort(process);
+//	else
+//		huge_sort(process);
 }
 
 int main(int argc, char *argv[])
@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
 	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
+	visual(process);
 	pick_up_algorithm(process);
 	visual(process);
 }

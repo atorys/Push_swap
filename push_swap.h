@@ -16,7 +16,6 @@
  */
 typedef struct s_stack
 {
-	int				value;
 	int 			index;
 	int 			pos;
 	struct s_stack	*next;
@@ -43,6 +42,7 @@ t_info	*init_process(int argc, char *argv[]);
 void	huge_sort(t_info	*process);
 
 int 	node_count(t_stack *head);
+int		count_digits(char const *s, char c);
 
 void	swap_s(t_stack **a);
 void	rotate_s(t_stack **a);

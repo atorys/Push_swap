@@ -9,6 +9,9 @@ add_executable(pushswap
         push_swap.h
         libft/ft_atoi.c
         libft/ft_strdup.c
+        libft/ft_split.c
+        libft/ft_strchr.c
+        libft/ft_substr.c
         libft/ft_strjoin.c
         libft/ft_strlen.c
         libft/ft_putstr_fd.c
@@ -17,4 +20,4 @@ add_executable(pushswap
         files/utils.c
         files/stack_manipulations/forming.c
         files/stack_manipulations/operations.c
-        files/stack_manipulations/double_operations.c files/algorithm/sort.c files/stack_manipulations/tools.c)
+        files/stack_manipulations/double_operations.c files/algorithm/sort.c files/stack_manipulations/tools.c files/input_checker.c)

@@ -15,8 +15,7 @@ static t_stack	*create_elem(int digit)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->value = digit;
-	new->index = -1;
+	new->index = digit;
 	new->pos = -1;
 	new->next = NULL;
 	new->prev = NULL;
@@ -47,19 +46,30 @@ static void	add_back(t_stack **head, t_stack *new)
 static void 	form_stack(t_stack **head, int argc, char *argv[])
 {
 	int		i;
+	int		j;
+	char 	**digit;
 	t_stack *node;
 
 	i = 0;
 	while (argc-- > 1)
 	{
-		node = create_elem((int)ft_atoi(argv[++i]));
-		if (!node)
-			; /** todo: make free*/
-		add_back(head, node);
+		j = -1;
+		digit = ft_split(argv[++i], ' ');
+		if (!*digit || !digit[0])
+			error_case("Malloc error", -1);
+		while (digit[++j])
+		{
+			node = create_elem((int)ft_atoi(digit[j]));
+			if (!node)
+				; /** todo: make free*/
+			add_back(head, node);
+			free(digit[j]);
+		}
+		free(digit);
 	}
 }
 
-static void indexing(t_stack **head, int argc)
+static void position_in_sorted_list(t_stack **head, int argc)
 {
 	t_stack		*temp;
 	long long	max;
@@ -72,26 +82,29 @@ static void indexing(t_stack **head, int argc)
 		temp = *head;
 		while (temp)
 		{
-			if (temp->value > max && temp->index == -1)
-				max = temp->value;
+			if (temp->index > max && temp->pos == -1)
+				max = temp->index;
 			temp = temp->next;
 		}
 		temp = *head;
-		while (temp->value != max)
+		while (temp->index != max)
 			temp = temp->next;
-		temp->index = i;
+		temp->pos = i;
 	}
 	i = 0;
 	temp = *head;
 	while (temp)
 	{
-		temp->pos = i++;
+		temp->index = i++;
 		if (!temp->next)
-			temp->pos = -1;
+			temp->index = -1;
 		temp = temp->next;
 	}
 }
-
+ /**
+  * preparation for sorting
+  * @return t_info type
+  */
 t_info *init_process(int argc, char *argv[])
 {
 	t_info	*process;
@@ -105,7 +118,9 @@ t_info *init_process(int argc, char *argv[])
 		return (NULL);
 	process->head_a = NULL;
 	process->head_b = NULL;
-	form_stack(&(process->head_a), argc, argv); /** todo: node wasn't allocated*/
-	indexing(&(process->head_a), argc);
+	form_stack(&(process->head_a), argc, argv);
+	if (argc == 2)
+		argc = count_digits(argv[1], ' ') + 1;/** todo: node wasn't allocated*/
+	position_in_sorted_list(&(process->head_a), argc);
 	return (process);
 }
