@@ -1,12 +1,12 @@
 #include "../../push_swap.h"
-
+#include "../../libft/libft.h"
 /**
  * swap first two elements at the top of stack A
  * @example before	:	[3]	[2]	1
  * @example after	:	[2]	[3]	1
  * @param  A : given stack
  */
-void	swap_s(t_stack **a)
+void	swap_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*second;
 
@@ -20,6 +20,9 @@ void	swap_s(t_stack **a)
 			second->next->prev = *a;
 		second->next = *a;
 		*a = second;
+		(*process)->commands = ft_strjoin((*process)->commands, operation);
+		if ((*process)->commands)
+			error_case(MALLOCERROR, -1);
 	}
 }
 
@@ -29,7 +32,7 @@ void	swap_s(t_stack **a)
  * @example after	:	2	1  [3]
  * @param A : given stack
  */
-void	rotate_s(t_stack **a)
+void	rotate_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*last;
 
@@ -43,6 +46,9 @@ void	rotate_s(t_stack **a)
 		last->next->next = NULL;
 		last->next->prev = last;
 		(*a)->prev = NULL;
+		(*process)->commands = ft_strjoin((*process)->commands, operation);
+		if ((*process)->commands)
+			error_case(MALLOCERROR, -1);
 	}
 }
 
@@ -52,7 +58,7 @@ void	rotate_s(t_stack **a)
  * @example after	:  [1]	3	2
  * @param A : given stack
  */
-void	reverse_rotate_s(t_stack **a)
+void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*last;
 
@@ -66,6 +72,9 @@ void	reverse_rotate_s(t_stack **a)
 	*a = (*a)->prev;
 	last->prev->next = NULL;
 	last->prev = NULL;
+	(*process)->commands = ft_strjoin((*process)->commands, operation);
+	if ((*process)->commands)
+		error_case(MALLOCERROR, -1);
 }
 
 /**
@@ -79,7 +88,7 @@ void	reverse_rotate_s(t_stack **a)
  * @param src: stack source
  * @param dest: stack destination
  */
-void	push_s(t_stack **src, t_stack **dest)
+void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 {
 	if (!(*src))
 		return ;
@@ -101,4 +110,7 @@ void	push_s(t_stack **src, t_stack **dest)
 		*dest = (*dest)->prev;
 	}
 	(*dest)->prev = NULL;
+	(*process)->commands = ft_strjoin((*process)->commands, operation);
+	if ((*process)->commands)
+		error_case(MALLOCERROR, -1);
 }

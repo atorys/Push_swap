@@ -5,6 +5,7 @@
 //# include <unistd.h>
 
 # define ERROR "\033[0;33mError\033[0m\n"
+# define MALLOCERROR "\033[0;33mMalloc failed\033[0m\n"
 
 /**
  * prototype for node of doubly linked list
@@ -44,12 +45,15 @@ void	huge_sort(t_info	*process);
 int 	node_count(t_stack *head);
 int		count_digits(char const *s, char c);
 
-void	swap_s(t_stack **a);
-void	rotate_s(t_stack **a);
-void	reverse_rotate_s(t_stack **a);
-void	push_s(t_stack **src, t_stack **dest);
-void	ss(t_stack **a, t_stack **b);
-void	rr(t_stack **a, t_stack **b);
-void	rrr(t_stack **a, t_stack **b);
+void	swap_s(t_stack **a, t_info **process, char *operation)
+void	rotate_s(t_stack **a, t_info **process, char *operation);
+void	reverse_rotate_s(t_stack **a, t_info **process, char *operation);
+void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation);
+void	ss(t_stack **a, t_stack **b, t_info **process);
+void	rr(t_stack **a, t_stack **b, t_info **process);
+void	rrr(t_stack **a, t_stack **b, t_info **process);
+
+void	sort_just_two(t_info *process);
+void	sort_three(t_info *process);
 
 #endif

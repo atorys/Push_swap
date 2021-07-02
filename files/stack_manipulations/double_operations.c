@@ -8,10 +8,10 @@
  * @example A | 2 1 3 ---> 1 2 3 |
  * @example B | 7 5 6 ---> 5 7 6 |
  */
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, t_info *process)
 {
-	swap_s(a);
-	swap_s(b);
+	swap_s(a, &process, "ss\n");
+	swap_s(b, &process, NULL);
 }
 
 /**
@@ -22,10 +22,10 @@ void	ss(t_stack **a, t_stack **b)
  * @example A | 2 1 3 ---> 1 3 2 |
  * @example B | 7 5 6 ---> 5 6 7 |
  */
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, t_info *process)
 {
-	rotate_s(a);
-	rotate_s(b);
+	rotate_s(a, &process, "rr\n");
+	rotate_s(b, &process, NULL);
 }
 
 /**
@@ -36,8 +36,8 @@ void	rr(t_stack **a, t_stack **b)
  * @example A | 2 1 3 ---> 3 2 1 |
  * @example B | 7 5 6 ---> 6 7 5 |
  */
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, t_info *process)
 {
-	reverse_rotate_s(a);
-	reverse_rotate_s(b);
+	reverse_rotate_s(a, &process, "rrr\n");
+	reverse_rotate_s(b, &process, NULL);
 }

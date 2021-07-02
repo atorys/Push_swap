@@ -78,7 +78,8 @@ static void position_in_sorted_list(t_stack **head, int argc)
 	i = argc - 1;
 	while (--i >= 0)
 	{
-		max = -2147483649;
+//		max = -2147483649;
+		max = -1000000; /** todo: min*/
 		temp = *head;
 		while (temp)
 		{

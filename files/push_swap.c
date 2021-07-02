@@ -43,41 +43,10 @@ void visual(t_info *process)
 void pick_up_algorithm(t_info *process)
 {
 	if (node_count(process->head_a) == 2)
-	{
-		swap_s(&process->head_a);
-		process->commands = ft_strjoin(process->commands, "sa\n");
-	}
+		sort_just_two(process);
 	if (node_count(process->head_a) == 3)
 	{
-		if (process->head_a->next->pos > process->head_a->next->next->pos) /** 321 132 231*/
-		{
-			if (process->head_a->pos > process->head_a->next->next->pos && \
-			process->head_a->pos > process->head_a->next->pos)
-			{
-				rotate_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "ra\n");
-			}
-			if (process->head_a->pos < process->head_a->next->pos)
-			{
-				reverse_rotate_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "rra\n");
-			}
-		}
-		if (process->head_a->pos > process->head_a->next->pos && \
-			!(process->head_a->pos < process->head_a->next->pos && \
-			process->head_a->next->pos < process->head_a->next->next->pos)) /** 213 312*/
-		{
-			if (process->head_a->pos > process->head_a->next->next->pos)
-			{
-				rotate_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "ra\n");
-			}
-			else
-			{
-				swap_s(&process->head_a);
-				process->commands = ft_strjoin(process->commands, "sa\n");
-			}
-		}
+		sort_three(process);
 	}
 //	else
 //		huge_sort(process);
