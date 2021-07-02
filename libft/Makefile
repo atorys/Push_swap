@@ -31,31 +31,34 @@ BONUS_FT_LIST = ft_lstnew.c				ft_lstadd_back.c\
 				ft_lstsize.c			ft_lstclear.c\
 				ft_lstlast.c			ft_lstiter.c\
 				ft_lstmap.c
-
-OBJS = $(patsubst %.c,%.o,$(FT_LIST))
-BONUS_OBJS = $(patsubst %.c,%.o,$(BONUS_FT_LIST))
+OBJS =			$(addprefix objects/, $(FT_LIST:.c=.o))
+BONUS_OBJS = 	$(addprefix objects/, $(BONUS_FT_LIST:.c=.o))
 
 RM = @rm -f
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-all:	$(NAME)
+.PHONY = all clean fclean re
 
-$(NAME):	$(OBJS) $(HEADER)
-	ar rcs $(NAME) $?
+all:	objects $(NAME)
 
-%.o : %.c
-	gcc $(CFLAGS) -c $< -o $@
+$(NAME):	$(OBJS)
+			ar rcs $(NAME) $?
 
-bonus: $(OBJS) $(BONUS_OBJS) $(HEADER)
-	ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)  $?
+objects :
+				@mkdir $@
+
+objects/%.o :	%.c $(HEADER)
+			    gcc $(FLAGS)  -c $< -o $@
+
+bonus: 			objects $(OBJS) $(BONUS_OBJS)
+				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)  $?
 
 clean:
-	$(RM) $(OBJS) $(BONUS_OBJS)
+				@rm -rf objects/
 
-fclean:	clean
-	$(RM) $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
 re:	fclean all
 
-.PHONY = all clean fclean re

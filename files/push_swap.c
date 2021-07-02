@@ -2,10 +2,10 @@
 #include "../push_swap.h"
 #include "../libft/libft.h"
 
-void visual(t_info *process)
+void	visual(t_info *process)
 {
 	t_stack	*a = NULL;
-	t_stack *b = NULL;
+	t_stack	*b = NULL;
 
 	a = process->head_a;
 	b = process->head_b;
@@ -40,19 +40,21 @@ void visual(t_info *process)
 //	}
 }
 
-void pick_up_algorithm(t_info *process)
+void	pick_up_algorithm(t_info *process)
 {
 	if (node_count(process->head_a) == 2)
 		sort_just_two(process);
 	if (node_count(process->head_a) == 3)
-	{
 		sort_three(process);
-	}
+	if (node_count(process->head_a) == 4)
+		sort_four(process, 0);
+	if (node_count(process->head_a) == 5)
+		sort_five(process);
 //	else
 //		huge_sort(process);
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_info	*process;
 
@@ -65,5 +67,6 @@ int main(int argc, char *argv[])
 		error_case(ERROR, -1);
 	visual(process);
 	pick_up_algorithm(process);
+//	printf("%s", process->commands);
 	visual(process);
 }

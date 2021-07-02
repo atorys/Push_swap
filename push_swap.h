@@ -40,12 +40,12 @@ void	error_case(char *message, int number);
 int		valid_args(int argc, char *argv[]);
 
 t_info	*init_process(int argc, char *argv[]);
-void	huge_sort(t_info	*process);
 
 int 	node_count(t_stack *head);
+void	indexing(t_stack **head);
 int		count_digits(char const *s, char c);
 
-void	swap_s(t_stack **a, t_info **process, char *operation)
+void	swap_s(t_stack **a, t_info **process, char *operation);
 void	rotate_s(t_stack **a, t_info **process, char *operation);
 void	reverse_rotate_s(t_stack **a, t_info **process, char *operation);
 void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation);
@@ -55,5 +55,8 @@ void	rrr(t_stack **a, t_stack **b, t_info **process);
 
 void	sort_just_two(t_info *process);
 void	sort_three(t_info *process);
+void	sort_four(t_info *process, int min);
+void	sort_five(t_info *process);
+void	huge_sort(t_info	*process);
 
 #endif

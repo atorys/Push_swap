@@ -21,8 +21,9 @@ void	swap_s(t_stack **a, t_info **process, char *operation)
 		second->next = *a;
 		*a = second;
 		(*process)->commands = ft_strjoin((*process)->commands, operation);
-		if ((*process)->commands)
+		if (!(*process)->commands)
 			error_case(MALLOCERROR, -1);
+		indexing(a);
 	}
 }
 
@@ -47,8 +48,9 @@ void	rotate_s(t_stack **a, t_info **process, char *operation)
 		last->next->prev = last;
 		(*a)->prev = NULL;
 		(*process)->commands = ft_strjoin((*process)->commands, operation);
-		if ((*process)->commands)
+		if (!(*process)->commands)
 			error_case(MALLOCERROR, -1);
+		indexing(a);
 	}
 }
 
@@ -73,8 +75,9 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
 	last->prev->next = NULL;
 	last->prev = NULL;
 	(*process)->commands = ft_strjoin((*process)->commands, operation);
-	if ((*process)->commands)
+	if (!(*process)->commands)
 		error_case(MALLOCERROR, -1);
+	indexing(a);
 }
 
 /**
@@ -111,6 +114,8 @@ void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 	}
 	(*dest)->prev = NULL;
 	(*process)->commands = ft_strjoin((*process)->commands, operation);
-	if ((*process)->commands)
+	if (!(*process)->commands)
 		error_case(MALLOCERROR, -1);
+	indexing(src);
+	indexing(dest);
 }

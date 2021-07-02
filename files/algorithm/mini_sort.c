@@ -2,7 +2,7 @@
 #include "../../push_swap.h"
 #include "../../libft/libft.h"
 
-void huge_sort(t_info	*process);
+void	huge_sort(t_info	*process);
 
 void	sort_just_two(t_info *process)
 {
@@ -14,21 +14,59 @@ void	sort_three(t_info *process)
 	t_stack	*node;
 
 	node = process->head_a;
-	if (process->head_a->next->pos > process->head_a->next->next->pos) /** 321 132 231*/
+	if (node->next->pos > node->next->next->pos)
 	{
-		if (process->head_a->pos > process->head_a->next->next->pos && \
-			process->head_a->pos > process->head_a->next->pos)
+		if (node->pos > node->next->next->pos && node->pos > node->next->pos)
 			rotate_s(&process->head_a, &process, "ra\n");
-		if (process->head_a->pos < process->head_a->next->pos)
+		node = process->head_a;
+		if (node->pos < node->next->pos)
 			reverse_rotate_s(&process->head_a, &process, "rra\n");
 	}
-	if (process->head_a->pos > process->head_a->next->pos && \
-			!(process->head_a->pos < process->head_a->next->pos && \
-			process->head_a->next->pos < process->head_a->next->next->pos)) /** 213 312*/
+	node = process->head_a;
+	if (node->pos > node->next->pos && !(node->pos < node->next->pos && \
+			node->next->pos < node->next->next->pos))
 	{
-		if (process->head_a->pos > process->head_a->next->next->pos)
+		if (node->pos > node->next->next->pos)
 			rotate_s(&process->head_a, &process, "ra\n");
 		else
 			swap_s(&process->head_a, &process, "sa\n");
 	}
+}
+
+void	sort_four(t_info *process, int min)
+{
+	t_stack	*node;
+
+	node = process->head_a;
+	while (node->pos != min)
+		node = node->next;
+	while (node->index != 0)
+	{
+		if (node->index > 0 && node->index <= 2)
+			rotate_s(&process->head_a, &process, "ra\n");
+		else
+			reverse_rotate_s(&process->head_a, &process, "rra\n");
+	}
+	push_s(&process->head_a, &process->head_b, &process, "pb\n");
+	sort_three(process);
+	push_s(&process->head_b, &process->head_a, &process, "pa\n");
+}
+
+void	sort_five(t_info *process)
+{
+	t_stack	*node;
+
+	node = process->head_a;
+	while (node->pos != 0)
+		node = node->next;
+	while (node->index != 0)
+	{
+		if (node->index > 0 && node->index < 3)
+			rotate_s(&process->head_a, &process, "ra\n");
+		else
+			reverse_rotate_s(&process->head_a, &process, "rra\n");
+	}
+	push_s(&process->head_a, &process->head_b, &process, "pb\n");
+	sort_four(process, 1);
+	push_s(&process->head_b, &process->head_a, &process, "pa\n");
 }

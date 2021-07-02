@@ -17,6 +17,7 @@ FILES = 	push_swap.c \
 			operations.c \
 			double_operations.c \
 			forming.c \
+			mini_sort.c \
 			tools.c \
 			utils.c
 O_FILES = 	$(addprefix objects/, $(FILES:.c=.o))
@@ -32,7 +33,7 @@ W =			\033[38;2;255;255;255
 .PHONY =	all	clean fclean re
 
 
-all	=		$(NAME)
+all	:		$(NAME)
 
 $(NAME) :	objects $(O_FILES) $(LIBRARY)
 			@$(CC) $(FLAGS) $(O_FILES) $(LIBRARY) -o $(NAME)
@@ -58,6 +59,6 @@ fclean :	clean
 			@rm -f $(NAME)
 			@make fclean -C libft/
 
-re :        fclean $(NAME)
+re :        fclean all
 
 .PHONY =	all clean fclean re

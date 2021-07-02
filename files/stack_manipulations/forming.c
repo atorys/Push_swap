@@ -47,8 +47,8 @@ static void 	form_stack(t_stack **head, int argc, char *argv[])
 {
 	int		i;
 	int		j;
-	char 	**digit;
-	t_stack *node;
+	char	**digit;
+	t_stack	*node;
 
 	i = 0;
 	while (argc-- > 1)
@@ -56,7 +56,7 @@ static void 	form_stack(t_stack **head, int argc, char *argv[])
 		j = -1;
 		digit = ft_split(argv[++i], ' ');
 		if (!*digit || !digit[0])
-			error_case("Malloc error", -1);
+			error_case(MALLOCERROR, -1);
 		while (digit[++j])
 		{
 			node = create_elem((int)ft_atoi(digit[j]));
@@ -69,7 +69,7 @@ static void 	form_stack(t_stack **head, int argc, char *argv[])
 	}
 }
 
-static void position_in_sorted_list(t_stack **head, int argc)
+static void	position_in_sorted_list(t_stack **head, int argc)
 {
 	t_stack		*temp;
 	long long	max;
@@ -78,8 +78,8 @@ static void position_in_sorted_list(t_stack **head, int argc)
 	i = argc - 1;
 	while (--i >= 0)
 	{
-//		max = -2147483649;
-		max = -1000000; /** todo: min*/
+		max = -2147483649;
+//		max = -1000000; /** todo: windows*/
 		temp = *head;
 		while (temp)
 		{
@@ -92,21 +92,14 @@ static void position_in_sorted_list(t_stack **head, int argc)
 			temp = temp->next;
 		temp->pos = i;
 	}
-	i = 0;
-	temp = *head;
-	while (temp)
-	{
-		temp->index = i++;
-		if (!temp->next)
-			temp->index = -1;
-		temp = temp->next;
-	}
+	indexing(head);
 }
- /**
-  * preparation for sorting
-  * @return t_info type
-  */
-t_info *init_process(int argc, char *argv[])
+
+/**
+ * preparation for sorting
+ * @return t_info type
+ */
+t_info	*init_process(int argc, char *argv[])
 {
 	t_info	*process;
 
@@ -121,7 +114,7 @@ t_info *init_process(int argc, char *argv[])
 	process->head_b = NULL;
 	form_stack(&(process->head_a), argc, argv);
 	if (argc == 2)
-		argc = count_digits(argv[1], ' ') + 1;/** todo: node wasn't allocated*/
+		argc = count_digits(argv[1], ' ') + 1;
 	position_in_sorted_list(&(process->head_a), argc);
 	return (process);
 }

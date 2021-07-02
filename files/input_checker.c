@@ -25,7 +25,7 @@ int	count_digits(char const *s, char c)
 	return (count);
 }
 
-static int check(int argc, char *argv[], int pairs, int start);
+static int	check(int argc, char *argv[], int pairs, int start);
 
 /**
  * check input arguments : invalid symbols
@@ -37,7 +37,7 @@ static int check(int argc, char *argv[], int pairs, int start);
  */
 int	valid_args(int argc, char *argv[])
 {
-	char 	**arg;
+	char	**arg;
 	int		i;
 	int		digits;
 
@@ -58,7 +58,7 @@ int	valid_args(int argc, char *argv[])
 	return (digits);
 }
 
-static int check(int argc, char *argv[], int pairs, int start)
+static int	check(int argc, char *argv[], int pairs, int start)
 {
 	int		i;
 	int		j;
