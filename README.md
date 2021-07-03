@@ -10,23 +10,25 @@
           8P                                                                       8P
 ```
 
-<details> <summary> <b> :pushpin: Navigation </b> </summary>
+<details> <summary> :pushpin: Navigation </summary>
+  
+## Navigation  
+- [Introduction to push_swap](#-Introduction-to-push_swap)
 
 </details>
 
-# Introduction to push_swap 
+
+# Introduction to push_swap  <img src="42.svg" width="25" title="hover text">
+[![forthebadge ](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)   
 
 42 School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle. 
 
-
-
-
-Colors
-
- [**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/23502/en.subject.pdf)  
+[**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/23502/en.subject.pdf)
+ 
+ 
 ___
-[![forthebadge ](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)
-___
+
+
 ``` bash
 ./push_swap ０ １ ２ ３ ４ ５ ６
 ```
