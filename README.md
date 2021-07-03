@@ -14,6 +14,7 @@
   
 ## Navigation  
 - [Introduction to push_swap](#-Introduction-to-push_swap)
+  - [Set of instructions](##Set-of-instructions)
 
 </details>
 
