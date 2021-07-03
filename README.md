@@ -37,7 +37,7 @@ ___
 
 
 ０ １ ２ ３ ４ ５ ６ 
-
+___
 ## Set of instructions
  **A:**  ­­­ ５  ­ １ ­ ３ ­ ４ ­ ２  
  **B:**  ­­­ is empty
