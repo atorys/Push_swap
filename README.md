@@ -17,6 +17,12 @@
 # Introduction to push_swap 
 
 42 School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle. 
+
+
+
+
+Colors
+
  [**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/23502/en.subject.pdf)  
 ___
 [![forthebadge ](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)
