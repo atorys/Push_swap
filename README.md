@@ -15,6 +15,7 @@
 ## Navigation  
 - [Introduction to push_swap](#-Introduction-to-push_swap)
   - [Set of instructions](##Set-of-instructions)
+  - [Rules](##Rules)
 
 </details>
 
@@ -52,3 +53,7 @@ swap first two elements at the top of choosen stack
 ### rotate a
 > **A:** `５` ­ ３ ­ ４ ­ ２    
 > **RA:** ３ ­ ４ ­ ２ ­ `５` 
+
+___
+
+## Rules
