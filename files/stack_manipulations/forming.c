@@ -109,13 +109,18 @@ t_info	*init_process(int argc, char *argv[])
 	if (!process)
 		return (NULL);
 	process->commands = ft_strdup("");
+	process->operations = NULL;
+	process->last_op = NULL;
 	if (!process->commands)
 		return (NULL);
 	process->head_a = NULL;
 	process->head_b = NULL;
+	process->tail_a = NULL;
+	process->tail_b = NULL;
 	form_stack(&(process->head_a), argc, argv);
 	if (argc == 2)
 		argc = count_digits(argv[1], ' ') + 1;
 	position_in_sorted_list(&(process->head_a), argc);
+	find_last(&process->head_a, &process->tail_a);
 	return (process);
 }

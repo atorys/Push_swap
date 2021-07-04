@@ -13,11 +13,11 @@ void	visual(t_info *process)
 	while (a)
 	{
 		if (a->moves == 0)
-			printf("\033[0;31m%-2d\033[0m(%d)| ", a->pos, a->moves);
+			printf("\033[0;31m%-2d\033[0m(%d)| ", a->pos, a->index);
 		if (a->moves > 0)
-			printf("%-2d(%d)| ", a->pos, a->moves);
+			printf("%-2d(%d)| ", a->pos, a->index);
 		if (a->moves < 0)
-			printf("\033[1;32m%-2d\033[0m(%d)| ", a->pos, a->moves);
+			printf("\033[1;32m%-2d\033[0m(%d)| ", a->pos, a->index);
 		a = a->next;
 	}
 	printf("\nB: ");
@@ -103,6 +103,11 @@ int	main(int argc, char *argv[])
 //	visual(process);
 	pick_up_algorithm(process);
 
-	printf("%s", process->commands);
+	while (process->operations)
+	{
+		printf("%s", process->operations->command);
+		process->operations = process->operations->next;
+	}
+//	printf("%s", process->commands);
 //	visual(process);
 }

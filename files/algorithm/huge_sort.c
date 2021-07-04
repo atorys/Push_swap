@@ -36,6 +36,7 @@ void half_to_b(t_algo	*params, t_info *process)
 	}
 //	visual(process);
 	moves = 0;
+	find_last(&process->head_b, &process->tail_b);
 	while (node_count(process->head_b) && ++moves)
 	{
 		i = node_count(process->head_b);

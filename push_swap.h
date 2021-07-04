@@ -24,6 +24,13 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }				t_stack;
 
+typedef struct s_cmd
+{
+	char			*command;
+	struct s_cmd	*next;
+	struct s_cmd	*prev;
+}				t_cmd;
+
 /**
  * general structure containing info
  * @fields commands : string
@@ -33,8 +40,12 @@ typedef struct s_stack
 typedef struct s_info
 {
 	char			*commands;
+	t_cmd			*operations;
+	t_cmd			*last_op;
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
+	t_stack			*tail_a;
+	t_stack			*tail_b;
 }				t_info;
 
 typedef struct s_algo
@@ -53,6 +64,7 @@ t_info	*init_process(int argc, char *argv[]);
 int 	node_count(t_stack *head);
 void	indexing(t_stack **head);
 int		count_digits(char const *s, char c);
+void	find_last(t_stack **head, t_stack **last);
 
 void	swap_s(t_stack **a, t_info **process, char *operation);
 void	rotate_s(t_stack **a, t_info **process, char *operation);

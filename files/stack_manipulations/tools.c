@@ -27,3 +27,10 @@ void	indexing(t_stack **head)
 		temp = temp->next;
 	}
 }
+
+void	find_last(t_stack **head, t_stack **last)
+{
+	*last = *head;
+	while ((*last)->next)
+		(*last) = (*last)->next;
+}
