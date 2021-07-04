@@ -14,6 +14,8 @@
   
 ## Navigation  
 - [Introduction to push_swap](#-Introduction-to-push_swap)
+  - [Set of instructions](##Set-of-instructions)
+  - [Rules](##Rules)
 
 </details>
 
@@ -35,7 +37,7 @@ ___
 
 
 ０ １ ２ ３ ４ ５ ６ 
-
+___
 ## Set of instructions
  **A:**  ­­­ ５  ­ １ ­ ３ ­ ４ ­ ２  
  **B:**  ­­­ is empty
@@ -51,3 +53,7 @@ swap first two elements at the top of choosen stack
 ### rotate a
 > **A:** `５` ­ ３ ­ ４ ­ ２    
 > **RA:** ３ ­ ４ ­ ２ ­ `５` 
+
+___
+
+## Rules
