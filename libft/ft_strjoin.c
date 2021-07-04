@@ -18,23 +18,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char			*temp;
 	unsigned int	i;
 
-	if (!s1 || !s2)
+	if (!s2)
 		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
 	temp = (char *)s1;
 	i = 0;
 	result = malloc(sizeof(int) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!result)
 		return (NULL);
 	while (*s1)
-	{
-		result[i++] = (char)*s1;
-		s1++;
-	}
+		result[i++] = (char)*s1++;
 	while (*s2)
-	{
-		result[i++] = (char)*s2;
-		s2++;
-	}
+		result[i++] = (char)*s2++;
 	result[i] = '\0';
 	free(temp);
 	return (result);

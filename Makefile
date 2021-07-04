@@ -18,6 +18,7 @@ FILES = 	push_swap.c \
 			double_operations.c \
 			forming.c \
 			mini_sort.c \
+			huge_sort.c \
 			tools.c \
 			utils.c
 O_FILES = 	$(addprefix objects/, $(FILES:.c=.o))

@@ -17,6 +17,7 @@ static t_stack	*create_elem(int digit)
 		return (NULL);
 	new->index = digit;
 	new->pos = -1;
+	new->moves = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

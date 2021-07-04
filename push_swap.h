@@ -19,6 +19,7 @@ typedef struct s_stack
 {
 	int 			index;
 	int 			pos;
+	int 			moves;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }				t_stack;
@@ -35,6 +36,14 @@ typedef struct s_info
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
 }				t_info;
+
+typedef struct s_algo
+{
+	int	max_pos;
+	int	pivot;
+	int	next_pos;
+	int moves;
+}				t_algo;
 
 void	error_case(char *message, int number);
 int		valid_args(int argc, char *argv[]);
@@ -57,6 +66,12 @@ void	sort_just_two(t_info *process);
 void	sort_three(t_info *process);
 void	sort_four(t_info *process, int min);
 void	sort_five(t_info *process);
-void	huge_sort(t_info	*process);
+void	huge_sort(t_info *process);
+
+
+
+
+
+void	visual(t_info *process);
 
 #endif

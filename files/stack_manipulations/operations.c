@@ -1,5 +1,31 @@
 #include "../../push_swap.h"
 #include "../../libft/libft.h"
+#include <stdio.h>
+
+void add_cmd(t_info **process, char *operation)
+{
+	int last;
+	char *tmp;
+
+	last = (int)ft_strlen((*process)->commands) - 3;
+	if (last >= 0)
+	{
+		if ((*process)->commands[last] == operation[0] && (*process)->commands[last + 1] != operation[1] && \
+			operation[0] == 'p' && (*process)->commands[last] == 'p')
+		{
+			tmp = (*process)->commands;
+			(*process)->commands = ft_substr((*process)->commands, 0, ft_strlen((*process)->commands) - 3);
+			if (!(*process)->commands)
+				error_case(MALLOCERROR, -1);
+			free(tmp);
+			return ;
+		}
+	}
+	(*process)->commands = ft_strjoin((*process)->commands, operation);
+	if (!(*process)->commands)
+		error_case(MALLOCERROR, -1);
+}
+
 /**
  * swap first two elements at the top of stack A
  * @example before	:	[3]	[2]	1
@@ -84,7 +110,7 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
  * take first element at the top of "src" and put at the top of "dest"
  * @example push a : B->A
  * @example A | 2 1 ---> 7 2 1 |
- * @example B | 7 5 6 ---> 5 6 |  @example
+ * @example B | 7 5 6 ---> 5 6 |
  * @example push b : A->B
  * @example A | 2 1 ---> 1 |
  * @example B | 7 5 6 ---> 2 7 5 6|
@@ -93,8 +119,8 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
  */
 void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 {
-	if (!(*src))
-		return ;
+//	if (!(*src))
+//		return ;
 	if (!(*dest))
 	{
 		*dest = *src;
@@ -113,9 +139,10 @@ void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 		*dest = (*dest)->prev;
 	}
 	(*dest)->prev = NULL;
-	(*process)->commands = ft_strjoin((*process)->commands, operation);
-	if (!(*process)->commands)
-		error_case(MALLOCERROR, -1);
+//	(*process)->commands = ft_strjoin((*process)->commands, operation);
+//	if (!(*process)->commands)
+//		error_case(MALLOCERROR, -1);
+	add_cmd(process, operation);
 	indexing(src);
 	indexing(dest);
 }

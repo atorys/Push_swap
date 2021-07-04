@@ -20,4 +20,4 @@ add_executable(pushswap
         files/utils.c
         files/stack_manipulations/forming.c
         files/stack_manipulations/operations.c
-        files/stack_manipulations/double_operations.c files/algorithm/mini_sort.c files/stack_manipulations/tools.c files/input_checker.c)
+        files/stack_manipulations/double_operations.c files/algorithm/mini_sort.c files/stack_manipulations/tools.c files/input_checker.c files/algorithm/huge_sort.c)
