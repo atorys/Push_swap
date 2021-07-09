@@ -15,11 +15,11 @@ static t_stack	*create_elem(int digit)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->index = digit;
+	new->steps_a = digit;
+	new->steps_b = 0;
 	new->pos = -1;
 	new->moves = 0;
 	new->next = NULL;
-	new->prev = NULL;
 	return (new);
 }
 
@@ -40,7 +40,6 @@ static void	add_back(t_stack **head, t_stack *new)
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
-		new->prev = temp;
 	}
 }
 
@@ -84,12 +83,12 @@ static void	position_in_sorted_list(t_stack **head, int argc)
 		temp = *head;
 		while (temp)
 		{
-			if (temp->index > max && temp->pos == -1)
-				max = temp->index;
+			if (temp->steps_a > max && temp->pos == -1)
+				max = temp->steps_a;
 			temp = temp->next;
 		}
 		temp = *head;
-		while (temp->index != max)
+		while (temp->steps_a != max)
 			temp = temp->next;
 		temp->pos = i;
 	}
@@ -108,19 +107,16 @@ t_info	*init_process(int argc, char *argv[])
 	process = malloc(sizeof(t_info));
 	if (!process)
 		return (NULL);
-	process->commands = ft_strdup("");
 	process->operations = NULL;
 	process->last_op = NULL;
-	if (!process->commands)
-		return (NULL);
 	process->head_a = NULL;
 	process->head_b = NULL;
-	process->tail_a = NULL;
-	process->tail_b = NULL;
+//	process->tail_a = NULL;
+//	process->tail_b = NULL;
 	form_stack(&(process->head_a), argc, argv);
 	if (argc == 2)
 		argc = count_digits(argv[1], ' ') + 1;
 	position_in_sorted_list(&(process->head_a), argc);
-	find_last(&process->head_a, &process->tail_a);
+//	find_last(&process->head_a, &process->tail_a);
 	return (process);
 }

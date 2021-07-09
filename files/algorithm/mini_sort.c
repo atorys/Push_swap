@@ -36,9 +36,9 @@ void	sort_four(t_info *process, int min)
 	node = process->head_a;
 	while (node->pos != min)
 		node = node->next;
-	while (node->index != 0)
+	while (node->steps_a != 0)
 	{
-		if (node->index > 0 && node->index <= 2)
+		if (node->steps_a > 0 && node->steps_a <= 2)
 			rotate_s(&process->head_a, &process, "ra\n");
 		else
 			reverse_rotate_s(&process->head_a, &process, "rra\n");
@@ -55,9 +55,9 @@ void	sort_five(t_info *process)
 	node = process->head_a;
 	while (node->pos != 0)
 		node = node->next;
-	while (node->index != 0)
+	while (node->steps_a != 0)
 	{
-		if (node->index > 0 && node->index < 3)
+		if (node->steps_a > 0 && node->steps_a < 3)
 			rotate_s(&process->head_a, &process, "ra\n");
 		else
 			reverse_rotate_s(&process->head_a, &process, "rra\n");

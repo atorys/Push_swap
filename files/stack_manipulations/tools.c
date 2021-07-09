@@ -21,9 +21,9 @@ void	indexing(t_stack **head)
 	temp = *head;
 	while (temp)
 	{
-		temp->index = i++;
-		if (!temp->next && temp->prev)
-			temp->index = -1;
+		temp->steps_a = i++;
+		if (!temp->next)
+			temp->steps_a = -1;
 		temp = temp->next;
 	}
 }

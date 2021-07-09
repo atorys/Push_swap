@@ -13,11 +13,11 @@ void	visual(t_info *process)
 	while (a)
 	{
 		if (a->moves == 0)
-			printf("\033[0;31m%-2d\033[0m(%d)| ", a->pos, a->index);
+			printf("\033[0;31m%-2d\033[0m(%d)| ", a->pos, a->steps_a);
 		if (a->moves > 0)
-			printf("%-2d(%d)| ", a->pos, a->index);
+			printf("%-2d(%d)| ", a->pos, a->steps_a);
 		if (a->moves < 0)
-			printf("\033[1;32m%-2d\033[0m(%d)| ", a->pos, a->index);
+			printf("\033[1;32m%-2d\033[0m(%d)| ", a->pos, a->steps_a);
 		a = a->next;
 	}
 	printf("\nB: ");
@@ -45,36 +45,6 @@ void	visual(t_info *process)
 //	}
 }
 
-void	correct_commandline(t_info *process)
-{
-	int	flag;
-	char *cmd1;
-	char *cmd2;
-	int i;
-	char *tmp;
-
-	flag = 1;
-	i = -1;
-	if (ft_strlen(process->commands) < 5)
-		return ;
-	while (process->commands[++i])
-	{
-		if (process->commands[i + 3])
-		{
-			cmd1 = ft_substr(process->commands, i, 2);
-			cmd2 = ft_substr(process->commands, i + 3, 2);
-			if (!cmd1 || !cmd2)
-				error_case(MALLOCERROR, -1);
-			if (cmd1[0] == cmd2[0] && cmd1[1] != cmd2[1])
-			{
-				tmp = process->commands;
-				process->commands = ft_strdup(&process->commands[i + 6]);
-//				free(tmp);
-				i += 4;
-			}
-		}
-	}
-}
 void	pick_up_algorithm(t_info *process)
 {
 	if (node_count(process->head_a) == 2)
@@ -85,8 +55,8 @@ void	pick_up_algorithm(t_info *process)
 		sort_four(process, 0);
 	else if (node_count(process->head_a) == 5)
 		sort_five(process);
-	else
-		huge_sort(process);
+//	else
+//		huge_sort(process);
 }
 
 int	main(int argc, char *argv[])
@@ -100,14 +70,14 @@ int	main(int argc, char *argv[])
 	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
-//	visual(process);
+	visual(process);
 	pick_up_algorithm(process);
 
-	while (process->operations)
-	{
-		printf("%s", process->operations->command);
-		process->operations = process->operations->next;
-	}
+//	while (process->operations)
+//	{
+//		printf("%s", process->operations->command);
+//		process->operations = process->operations->next;
+//	}
 //	printf("%s", process->commands);
 //	visual(process);
 }

@@ -17,11 +17,11 @@
  */
 typedef struct s_stack
 {
-	int 			index;
 	int 			pos;
+	int 			steps_a;
+	int 			steps_b;
 	int 			moves;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }				t_stack;
 
 typedef struct s_cmd
@@ -39,13 +39,13 @@ typedef struct s_cmd
  */
 typedef struct s_info
 {
-	char			*commands;
+//	char			*commands;
 	t_cmd			*operations;
 	t_cmd			*last_op;
 	struct s_stack	*head_a;
 	struct s_stack	*head_b;
-	t_stack			*tail_a;
-	t_stack			*tail_b;
+//	t_stack			*tail_a;
+//	t_stack			*tail_b;
 }				t_info;
 
 typedef struct s_algo

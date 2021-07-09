@@ -55,11 +55,7 @@ void	swap_s(t_stack **a, t_info **process, char *operation)
 	second = (*a)->next;
 	if (*a && (*a)->next)
 	{
-		(*a)->prev = second;
 		(*a)->next = second->next;
-		second->prev = NULL;
-		if (second->next)
-			second->next->prev = *a;
 		second->next = *a;
 		*a = second;
 		add_cmd(process, operation);
@@ -141,19 +137,19 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
  */
 void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 {
-//	if (!(*src))
-//		return ;
+	if (!(*src))
+		return ;
 	if (!(*dest))
 	{
 		*dest = *src;
 		*src = (*src)->next;
-		if (*src)
-			(*src)->prev = NULL;
+//		if (*src)
+//			(*src)->prev = NULL;
 		(*dest)->next = NULL;
 	}
 	else
 	{
-		(*dest)->prev = *src;
+//		(*dest)->prev = *src;
 		*src = (*src)->next;
 		if (*src)
 			(*src)->prev = NULL;
