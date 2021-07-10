@@ -2,13 +2,16 @@
 #include "../../libft/libft.h"
 #include <stdio.h>
 
-void add_cmd(t_info **process, char *operation)
+void	add_cmd(t_info **process, char *operation)
 {
 	t_cmd	*new;
 
+	if (!operation)
+		return ;
 	if ((*process)->operations && operation[0] == 'p')
 	{
-		if ((*process)->last_op->command[0] == 'p' && (*process)->last_op->command[1] != operation[1])
+		if ((*process)->last_op->command[0] == 'p' && \
+		(*process)->last_op->command[1] != operation[1])
 		{
 			if ((*process)->last_op == (*process)->operations)
 			{
@@ -76,24 +79,22 @@ void	rotate_s(t_stack **a, t_info **process, char *operation)
 	last = *a;
 	if (*a && (*a)->next)
 	{
-		*a = (*a)->next;
 		while (last->next != NULL)
 			last = last->next;
-		last->next = (*a)->prev;
-		if (operation[1] == 'a')
-			(*process)->tail_a = last->next;
-		else
-			(*process)->tail_b = last->next;
+		last->next = (*a);
+		*a = (*a)->next;
+//		if (operation[1] == 'a')
+//			(*process)->tail_a = last->next;
+//		else
+//			(*process)->tail_b = last->next;
 		last->next->next = NULL;
-		last->next->prev = last;
-		(*a)->prev = NULL;
 		add_cmd(process, operation);
 		indexing(a);
 	}
-	if (operation[1] == 'a')
-		(*process)->tail_a = last;
-	else
-		(*process)->tail_b = last;
+//	if (operation[1] == 'a')
+//		(*process)->tail_a = last;
+//	else
+//		(*process)->tail_b = last;
 }
 
 /**
@@ -105,21 +106,23 @@ void	rotate_s(t_stack **a, t_info **process, char *operation)
 void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*last;
+	t_stack	*prelast;
 
 	if (!(*a))
 		return ;
 	last = *a;
 	while (last->next != NULL)
 		last = last->next;
-	if (operation[2] == 'a')
-		(*process)->tail_a = last->prev;
-	else
-		(*process)->tail_b = last->prev;
+	prelast = *a;
+	while (prelast->next != last)
+		prelast = prelast->next;
+	prelast->next = NULL;
+//	if (operation[2] == 'a')
+//		(*process)->tail_a = last->prev;
+//	else
+//		(*process)->tail_b = last->prev;
 	last->next = *a;
-	(*a)->prev = last;
-	*a = (*a)->prev;
-	last->prev->next = NULL;
-	last->prev = NULL;
+	*a = last;
 	add_cmd(process, operation);
 	indexing(a);
 }
@@ -137,26 +140,23 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
  */
 void	push_s(t_stack **src, t_stack **dest, t_info **process, char *operation)
 {
+	t_stack	*moved;
+
 	if (!(*src))
 		return ;
 	if (!(*dest))
 	{
 		*dest = *src;
 		*src = (*src)->next;
-//		if (*src)
-//			(*src)->prev = NULL;
 		(*dest)->next = NULL;
 	}
 	else
 	{
-//		(*dest)->prev = *src;
+		moved = *src;
 		*src = (*src)->next;
-		if (*src)
-			(*src)->prev = NULL;
-		(*dest)->prev->next = *dest;
-		*dest = (*dest)->prev;
+		moved->next = *dest;
+		*dest = moved;
 	}
-	(*dest)->prev = NULL;
 	add_cmd(process, operation);
 	indexing(src);
 	indexing(dest);

@@ -1,6 +1,6 @@
 #include "../../push_swap.h"
 
-int	node_count(t_stack *head)
+unsigned int	node_count(t_stack *head)
 {
 	t_stack	*temp;
 	int		nodes;
@@ -14,16 +14,22 @@ int	node_count(t_stack *head)
 
 void	indexing(t_stack **head)
 {
-	t_stack		*temp;
-	int			i;
+	t_stack			*temp;
+	int				i;
+	unsigned int	n_count;
 
+	n_count = node_count(*head);
 	i = 0;
 	temp = *head;
+	while (temp && i <= n_count / 2)
+	{
+		temp->index = i++;
+		temp = temp->next;
+	}
+	i -= 1 + !(n_count % 2);
 	while (temp)
 	{
-		temp->steps_a = i++;
-		if (!temp->next)
-			temp->steps_a = -1;
+		temp->index = -1 * i--;
 		temp = temp->next;
 	}
 }

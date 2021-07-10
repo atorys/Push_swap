@@ -19,7 +19,7 @@ long	ft_atoi(const char *str)
 
 	digit = 0;
 	flag = 1;
-	while (*str == ' ' || *str == '\v' || *str == '\t' ||\
+	while (*str == ' ' || *str == '\v' || *str == '\t' || \
 	 *str == '\f' || *str == '\r' || *str == '\n')
 		str++;
 	if (*str == '-' || *str == '+')
@@ -33,7 +33,5 @@ long	ft_atoi(const char *str)
 		digit = (digit * 10) + (*str - '0');
 		str++;
 	}
-//	if (flag * digit > 2147483647 || flag * digit < -2147483648)
-//		return (NULL); /** todo: ?????*/
 	return (flag * digit);
 }

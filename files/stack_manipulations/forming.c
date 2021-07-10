@@ -15,10 +15,11 @@ static t_stack	*create_elem(int digit)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
-	new->steps_a = digit;
-	new->steps_b = 0;
+	new->index = digit;
+	new->steps = 9999999;
 	new->pos = -1;
-	new->moves = 0;
+	new->been_moved = 0;
+	new->total_moves = 9999999;
 	new->next = NULL;
 	return (new);
 }
@@ -79,16 +80,15 @@ static void	position_in_sorted_list(t_stack **head, int argc)
 	while (--i >= 0)
 	{
 		max = -2147483649;
-//		max = -1000000; /** todo: windows*/
 		temp = *head;
 		while (temp)
 		{
-			if (temp->steps_a > max && temp->pos == -1)
-				max = temp->steps_a;
+			if (temp->index > max && temp->pos == -1)
+				max = temp->index;
 			temp = temp->next;
 		}
 		temp = *head;
-		while (temp->steps_a != max)
+		while (temp->index != max)
 			temp = temp->next;
 		temp->pos = i;
 	}

@@ -12,20 +12,20 @@ void	error_case(char *message, int number)
 	exit(number);
 }
 
-void	free_struct(t_stack **node)
-{
-	t_stack	*temp;
-	t_stack	*being_freed;
-
-	if ((*node)->prev)
-		while ((*node)->prev)
-			*node = (*node)->prev;
-	temp = *node;
-	while (temp)
-	{
-		being_freed = temp;
-		free(being_freed);
-		temp = temp->next;
-	}
-	*node = NULL;
-}
+//void	free_struct(t_stack **node)
+//{
+//	t_stack	*temp;
+//	t_stack	*being_freed;
+//
+//	if ((*node)->prev)
+//		while ((*node)->prev)
+//			*node = (*node)->prev;
+//	temp = *node;
+//	while (temp)
+//	{
+//		being_freed = temp;
+//		free(being_freed);
+//		temp = temp->next;
+//	}
+//	*node = NULL;
+//}

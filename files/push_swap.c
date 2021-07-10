@@ -1,32 +1,54 @@
 #include <stdio.h>
 #include "../push_swap.h"
-#include "../libft/libft.h"
+//#include "../libft/libft.h"
 
 void	visual(t_info *process)
 {
 	t_stack	*a = NULL;
 	t_stack	*b = NULL;
 
+
+//	a = process->head_a;
+//	b = process->head_b;
+//	printf("\nA: ");
+//	while (a)
+//	{
+//		printf("%-2d-> ", a->pos);
+//		if (a->next)
+//			printf("%-2d| ", a->next->pos);
+//		else
+//			printf("%s| ", "NULL");
+//		a = a->next;
+//	}
+//	printf("\nB: ");
+//	while (b)
+//	{
+//		printf("%-2d-> ", b->pos);
+//		if (b->next)
+//			printf("%-2d| ", b->next->pos);
+//		else
+//			printf("%s| ", "NULL");
+//		b = b->next;
+//	}
+//	printf("\n");
 	a = process->head_a;
 	b = process->head_b;
 	printf("\nA: ");
 	while (a)
 	{
-		if (a->moves == 0)
-			printf("\033[0;31m%-2d\033[0m(%d)| ", a->pos, a->steps_a);
-		if (a->moves > 0)
-			printf("%-2d(%d)| ", a->pos, a->steps_a);
-		if (a->moves < 0)
-			printf("\033[1;32m%-2d\033[0m(%d)| ", a->pos, a->steps_a);
+		printf("%d) \033[1;32m%-2d \033[0m", a->index, a->pos);
+		printf(" (tb: %d, tt: %d)      ", a->steps, a->total_moves);
 		a = a->next;
 	}
 	printf("\nB: ");
 	while (b)
 	{
-		printf("%-2d| ", b->pos);
+		printf("%d) \033[1;32m%-2d \033[0m", b->index, b->pos);
 		b = b->next;
 	}
 	printf("\n");
+
+
 //	printf("%s", process->commands);
 	//	a = process->head_a;
 //	printf("A: ");
@@ -55,8 +77,8 @@ void	pick_up_algorithm(t_info *process)
 		sort_four(process, 0);
 	else if (node_count(process->head_a) == 5)
 		sort_five(process);
-//	else
-//		huge_sort(process);
+	else
+		huge_sort(process);
 }
 
 int	main(int argc, char *argv[])
@@ -70,14 +92,14 @@ int	main(int argc, char *argv[])
 	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
-	visual(process);
+//	visual(process);
 	pick_up_algorithm(process);
 
-//	while (process->operations)
-//	{
-//		printf("%s", process->operations->command);
-//		process->operations = process->operations->next;
-//	}
-//	printf("%s", process->commands);
+	while (process->operations)
+	{
+		printf("%s", process->operations->command);
+		process->operations = process->operations->next;
+	}
+
 //	visual(process);
 }
