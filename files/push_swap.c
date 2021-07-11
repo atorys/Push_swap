@@ -95,13 +95,13 @@ int	main(int argc, char *argv[])
 	process = init_process(argc, argv); /** todo: free process*/
 	if (!process)
 		error_case(ERROR, -1);
-//	visual(process);
+	visual(process);
 	pick_up_algorithm(process);
 
-	while (process->operations)
-	{
-		printf("%s", process->operations->command); /** todo: WRITE */
-		process->operations = process->operations->next;
-	}
-//	visual(process);
+//	while (process->operations)
+//	{
+//		printf("%s", process->operations->command); /** todo: WRITE */
+//		process->operations = process->operations->next;
+//	}
+	visual(process);
 }

@@ -79,17 +79,20 @@ static int count_steps(int curr_pos, t_stack *where_to_put)
 	return (result->index);
 }
 
-static void insert_and_push(t_algo	*params, t_info *process)
+static void insert_and_push(t_algo	*params, t_info *process, unsigned int count)
 {
 	t_stack *a;
 
-	while (process->head_a)
+	while (count--)
 	{
 		a = process->head_a;
 		params->next_pos = process->head_a;
 		while (a)
 		{
-			a->steps = count_steps(a->pos, process->head_b);
+			if (a->been_moved)
+				a->steps = 999999;
+			else
+				a->steps = count_steps(a->pos, process->head_b);
 			if ((a->steps < 0 && a->index < 0)  || (a->steps > 0 && a->index > 0)) {
 				if (a->steps * (1 - (2 * (a->steps < 0))) > a->index * (1 - (2 * (a->index < 0))))
 					a->total_moves = a->steps * (1 - (2 * (a->steps < 0)));
@@ -98,10 +101,11 @@ static void insert_and_push(t_algo	*params, t_info *process)
 			}
 			else
 				a->total_moves = a->steps * (1 - (2 * (a->steps < 0))) + a->index * (1 - (2 * (a->index < 0)));
-			if (a->total_moves < params->next_pos->total_moves)
+			if (a->total_moves < params->next_pos->total_moves && !a->been_moved)
 				params->next_pos = a;
 			a = a->next;
 		}
+		visual(process);
 		if (params->next_pos->index > 0 && params->next_pos->steps > 0)
 		{
 			while (params->next_pos->index != 0 && params->next_pos->steps != 0)
@@ -142,15 +146,18 @@ static void push_back_to_a(t_algo	*params, t_info *process)
 			break ;
 		last = last->next;
 	}
-	while (last->index != 0)
+	while (last->index != -1)
 	{
 		if (last->index > 0)
 			rotate_s(&process->head_b, &process, "rb\n");
 		else
 			reverse_rotate_s(&process->head_b, &process, "rrb\n");
 	}
-	while (process->head_b)
+	while (process->head_b->pos != 0)
+	{
+		process->head_b->been_moved = 1;
 		push_s(&process->head_b, &process->head_a, &process, "pa\n");
+	}
 }
 
 void	huge_sort(t_info	*process)
@@ -163,6 +170,9 @@ void	huge_sort(t_info	*process)
 	params.count_b = 0;
 
 	push_edges_to_b(&params, process);
-	insert_and_push(&params, process);
+	visual(process);
+	insert_and_push(&params, process, params.count_a / 2);
 	push_back_to_a(&params, process);
+	insert_and_push(&params, process, params.count_a / 2 - 2);
+	visual(process);
 }
