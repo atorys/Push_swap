@@ -4,7 +4,7 @@
 /**
  * create new node with type t_stack
  * @param digit: input value
- * @node {prev | value : index | next}
+ * @node {value : index | next}
  * @return created node
  */
 static t_stack	*create_elem(int digit)

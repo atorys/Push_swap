@@ -69,13 +69,16 @@ void	visual(t_info *process)
 
 void	pick_up_algorithm(t_info *process)
 {
-	if (node_count(process->head_a) == 2)
+	unsigned int	count;
+
+	count = node_count(process->head_a);
+	if (count == 2)
 		sort_just_two(process);
-	else if (node_count(process->head_a) == 3)
+	else if (count == 3)
 		sort_three(process);
-	else if (node_count(process->head_a) == 4)
+	else if (count == 4)
 		sort_four(process, 0);
-	else if (node_count(process->head_a) == 5)
+	else if (count == 5)
 		sort_five(process);
 	else
 		huge_sort(process);
@@ -97,9 +100,8 @@ int	main(int argc, char *argv[])
 
 	while (process->operations)
 	{
-		printf("%s", process->operations->command);
+		printf("%s", process->operations->command); /** todo: WRITE */
 		process->operations = process->operations->next;
 	}
-
 //	visual(process);
 }

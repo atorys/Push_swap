@@ -10,11 +10,12 @@
 
 /**
  * prototype for node of doubly linked list
- * @fields value : integer
- * @fields index : index in sorted array
+ * @fields pos : position in sorted array
+ * @fields index : index in current array
+ * @fields steps : index in other array
+ * @fields total mpves : needed to move element in right order in
  * @fields next : pointer to next node
- * @fields prev : pointer to previous node
- * @prototype prev | value | [index] | next
+ * @prototype value | [index] | next
  */
 typedef struct s_stack
 {
@@ -36,8 +37,8 @@ typedef struct s_cmd
 /**
  * general structure containing info
  * @fields commands : string
- * @fields head_a : doubly linked list A
- * @fields head_b : doubly linked list B
+ * @fields head_a : linked list A
+ * @fields head_b : linked list B
  */
 typedef struct s_info
 {

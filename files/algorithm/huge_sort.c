@@ -1,98 +1,22 @@
 #include "../../push_swap.h"
 
-//void	check_next(t_algo	*params, t_info *process)
-//{
-//	int flag;
-//
-//	flag = 1;
-//	while (flag)
-//	{
-//		flag = 0;
-//		if (process->head_a->next->pos == params->next_pos)
-//			swap_s(&process->head_a, &process, "sa\n");;
-//		if (process->head_a->pos == params->next_pos)
-//		{
-//			process->head_a->moves = -1;
-//			rotate_s(&process->head_a, &process, "ra\n");
-//			params->next_pos++;
-//			flag++;
-////			visual(process);
-//		}
-//	}
-//}
-//
-//void half_to_b(t_algo	*params, t_info *process)
-//{
-//	int		i;
-//	int 	moves;
-//
-//	i = node_count(process->head_a);
-//	while (i-- > 0)
-//	{
-//		if (process->head_a->pos <= params->pivot)
-//			push_s(&process->head_a, &process->head_b, &process, "pb\n");
-//		else
-//			rotate_s(&process->head_a, &process, "ra\n");
-//	}
-////	visual(process);
-//	moves = 0;
-//	find_last(&process->head_b, &process->tail_b);
-//	while (node_count(process->head_b) && ++moves)
-//	{
-//		i = node_count(process->head_b);
-//		params->pivot = i / 2;
-//		while (i-- > 0)
-//		{
-//			if (process->head_b->pos >= params->pivot)
-//			{
-//				process->head_b->moves += moves;
-//				push_s(&process->head_b, &process->head_a, &process, "pa\n");
-//			}
-//			else
-//				rotate_s(&process->head_b, &process, "rb\n");
-//		}
-////		visual(process);
-//	}
-////	printf("next->pos %d", params->next_pos);
-//}
-//
-//void main_sort(t_algo	*params, t_info *process)
-//{
-//	int	depth;
-//	int	i;
-//	int moves;
-//
-//	depth = process->head_a->moves;
-//	while (depth >= 0)
-//	{
-//		while (depth == process->head_a->moves)
-//			push_s(&process->head_a, &process->head_b, &process, "pb\n");
-////		visual(process);
-//		moves = 0;
-//		while (node_count(process->head_b) && ++moves)
-//		{
-//			i = node_count(process->head_b);
-//			params->pivot = ((i - params->next_pos) / 2) + params->next_pos;
-////			printf("pivot = %d\n", params->pivot);
-//			while (i-- > 0)
-//			{
-//				if (process->head_b->pos >= params->pivot)
-//				{
-//					process->head_b->moves += moves;
-//					push_s(&process->head_b, &process->head_a, &process, "pa\n");
-//					check_next(params, process);
-//				}
-//				else
-//					rotate_s(&process->head_b, &process, "rb\n");
-////				visual(process);
-//			}
-////			visual(process);
-//		}
-//		depth = process->head_a->moves;
-//	}
-//}
-
-
+void twisting(t_stack *moving_elem, t_stack	*head, t_info *process)
+{
+	if (moving_elem->index > 0)
+	{
+		if (head == process->head_a)
+			rotate_s(&process->head_a, &process, "ra\n");
+		else
+			rotate_s(&process->head_b, &process, "rb\n");
+	}
+	else
+	{
+		if (head == process->head_a)
+			reverse_rotate_s(&process->head_a, &process, "rra\n");
+		else
+			reverse_rotate_s(&process->head_b, &process, "rrb\n");
+	}
+}
 
 static void push_edges_to_b(t_algo	*params, t_info *process)
 {
@@ -109,48 +33,24 @@ static void push_edges_to_b(t_algo	*params, t_info *process)
 			max = a;
 		a = a->next;
 	}
-//	printf("\nmax index -> %d\n", max->index);
-//	printf("min index -> %d\n\n", min->index);
 	if (min->index * (1 - (2 * (min->index < 0))) >= max->index * (1 - (2 * (max->index < 0))) + 1)
 	{
 		while (max->index != 0)
-		{
-			if (max->index > 0)
-				rotate_s(&process->head_a, &process, "ra\n");
-			else
-				reverse_rotate_s(&process->head_a, &process, "rra\n");
-		}
+			twisting(max, process->head_a, process);
 		push_s(&process->head_a, &process->head_b, &process, "pb\n");
 		while (min->index != 0)
-		{
-			if (min->index > 0)
-				rotate_s(&process->head_a, &process, "ra\n");
-			else
-				reverse_rotate_s(&process->head_a, &process, "rra\n");
-		}
+			twisting(min, process->head_a, process);
 		push_s(&process->head_a, &process->head_b, &process, "pb\n");
-//		swap_s(&process->head_b, &process, "sb\n");
 	}
 	else
 	{
 		while (min->index != 0)
-		{
-			if (min->index > 0)
-				rotate_s(&process->head_a, &process, "ra\n");
-			else
-				reverse_rotate_s(&process->head_a, &process, "rra\n");
-		}
+			twisting(min, process->head_a, process);
 		push_s(&process->head_a, &process->head_b, &process, "pb\n");
 		while (max->index != 0)
-		{
-			if (max->index > 0)
-				rotate_s(&process->head_a, &process, "ra\n");
-			else
-				reverse_rotate_s(&process->head_a, &process, "rra\n");
-		}
+			twisting(max, process->head_a, process);
 		push_s(&process->head_a, &process->head_b, &process, "pb\n");
 	}
-
 }
 
 static int count_steps(int curr_pos, t_stack *where_to_put)
@@ -190,27 +90,36 @@ static void insert_and_push(t_algo	*params, t_info *process)
 		while (a)
 		{
 			a->steps = count_steps(a->pos, process->head_b);
-			a->total_moves = a->steps * (1 - (2 * (a->steps < 0))) + a->index * (1 - (2 * (a->index < 0)));
+			if ((a->steps < 0 && a->index < 0)  || (a->steps > 0 && a->index > 0)) {
+				if (a->steps * (1 - (2 * (a->steps < 0))) > a->index * (1 - (2 * (a->index < 0))))
+					a->total_moves = a->steps * (1 - (2 * (a->steps < 0)));
+				else
+					a->total_moves = a->index * (1 - (2 * (a->index < 0)));
+			}
+			else
+				a->total_moves = a->steps * (1 - (2 * (a->steps < 0))) + a->index * (1 - (2 * (a->index < 0)));
 			if (a->total_moves < params->next_pos->total_moves)
 				params->next_pos = a;
 			a = a->next;
 		}
-//		visual(process);
-//		printf(" next will be: %d\n", params->next_pos->pos);
-//		while (params->next_pos->index != 0 && params->next_pos->steps != 0)
-//		{
-//			if (params->next_pos->index > 0 && params->next_pos->steps > 0 && params->next_pos->steps--)
-//				rr(&process->head_a, &process->head_b, &process);
-//			else if (params->next_pos->index < 0 && params->next_pos->steps < 0 && params->next_pos->steps++)
-//				rrr(&process->head_a, &process->head_b, &process);
-//		}
-		while (params->next_pos->index != 0)
+		if (params->next_pos->index > 0 && params->next_pos->steps > 0)
 		{
-			if (params->next_pos->index > 0)
-				rotate_s(&process->head_a, &process, "ra\n");
-			else
-				reverse_rotate_s(&process->head_a, &process, "rra\n");
+			while (params->next_pos->index != 0 && params->next_pos->steps != 0)
+			{
+				params->next_pos->steps--;
+				rr(&process->head_a, &process->head_b, &process);
+			}
 		}
+		else if (params->next_pos->index < 0 && params->next_pos->steps < 0)
+		{
+			while (params->next_pos->index != 0 && params->next_pos->steps != 0)
+			{
+				params->next_pos->steps++;
+				rrr(&process->head_a, &process->head_b, &process);
+			}
+		}
+		while (params->next_pos->index != 0)
+			twisting(params->next_pos, process->head_a, process);
 		while (params->next_pos->steps != 0)
 		{
 			if (params->next_pos->steps > 0 && params->next_pos->steps--)
@@ -219,9 +128,7 @@ static void insert_and_push(t_algo	*params, t_info *process)
 				reverse_rotate_s(&process->head_b, &process, "rrb\n");
 		}
 		push_s(&process->head_a, &process->head_b, &process, "pb\n");
-//		visual(process);
 	}
-
 }
 
 static void push_back_to_a(t_algo	*params, t_info *process)
@@ -258,9 +165,4 @@ void	huge_sort(t_info	*process)
 	push_edges_to_b(&params, process);
 	insert_and_push(&params, process);
 	push_back_to_a(&params, process);
-//	half_to_b(&params, process);
-//	check_next(&params, process);
-//	printf("next->pos %d", params.next_pos);
-//	main_sort(&params, process);
-
 }
