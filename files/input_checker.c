@@ -42,19 +42,20 @@ static int	check(int argc, char *argv[], int pairs, int start)
 	i = start;
 	while (argc-- > 1)
 	{
+		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+			return (-1);
 		i++;
 		j = -1;
 		while (argv[i][++j])
 		{
 			if (j == 0 && (argv[i][j] == '-' || argv[i][j] == '+'))
 				continue ;
-			else if (!ft_isdigit(argv[i][j]) || ft_atoi(argv[i]) > 2147483647 || \
-				ft_atoi(argv[i]) < -2147483648)
+			else if (!ft_isdigit(argv[i][j]))
 				return (-1);
 		}
 		if (argc > 1 && ft_atoi(argv[i]) < ft_atoi(argv[i + 1]))
 			pairs--;
-		j = -1;
+		j = start;
 		while (++j < i)
 			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (-1);

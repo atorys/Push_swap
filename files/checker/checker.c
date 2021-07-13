@@ -65,39 +65,31 @@ void	visual(t_info *process)
 
 static void run_cmd(t_info	*process, char *cmd)
 {
-	if (!ft_strncmp(cmd, "sa", 2))
+	if (!ft_strncmp(cmd, "sa", ft_strlen(cmd)))
 		swap_s(&process->head_a, &process, NULL);
-	else if (!ft_strncmp(cmd, "sb", 2))
+	else if (!ft_strncmp(cmd, "sb", ft_strlen(cmd)))
 		swap_s(&process->head_b, &process, NULL);
-	else if (!ft_strncmp(cmd, "ss", 2))
+	else if (!ft_strncmp(cmd, "ss", ft_strlen(cmd)))
 		ss(&process->head_a, &process->head_b, &process);
-	else if (!ft_strncmp(cmd, "pa", 2))
+	else if (!ft_strncmp(cmd, "pa", ft_strlen(cmd)))
 		push_s(&process->head_b, &process->head_a, &process, NULL);
-	else if (!ft_strncmp(cmd, "pb", 2))
+	else if (!ft_strncmp(cmd, "pb", ft_strlen(cmd)))
 		push_s(&process->head_a, &process->head_b, &process, NULL);
-	else if (!ft_strncmp(cmd, "ra", 2))
+	else if (!ft_strncmp(cmd, "ra", ft_strlen(cmd)))
 		rotate_s(&process->head_a, &process, NULL);
-	else if (!ft_strncmp(cmd, "rb", 2))
+	else if (!ft_strncmp(cmd, "rb", ft_strlen(cmd)))
 		rotate_s(&process->head_b, &process, NULL);
-	else if (!ft_strncmp(cmd, "rr", 2))
-	{
-		rotate_s(&process->head_a, &process, NULL);
-		rotate_s(&process->head_b, &process, NULL);
-	}
-//		rr(&process->head_b, &process->head_b, &process);
-	else if (!ft_strncmp(cmd, "rra", 3))
+	else if (!ft_strncmp(cmd, "rr", ft_strlen(cmd)))
+		rr(&process->head_a, &process->head_b, &process);
+	else if (!ft_strncmp(cmd, "rra", ft_strlen(cmd)))
 		reverse_rotate_s(&process->head_a, &process, NULL);
-	else if (!ft_strncmp(cmd, "rrb", 3))
+	else if (!ft_strncmp(cmd, "rrb", ft_strlen(cmd)))
 		reverse_rotate_s(&process->head_b, &process, NULL);
-	else if (!ft_strncmp(cmd, "rrr", 3))
-	{
-		reverse_rotate_s(&process->head_a, &process, NULL);
-		reverse_rotate_s(&process->head_b, &process, NULL);
-	}
-//		rrr(&process->head_a, &process->head_b, &process);
+	else if (!ft_strncmp(cmd, "rrr", ft_strlen(cmd)))
+		rrr(&process->head_a, &process->head_b, &process);
 	else
-		error_case("wtf", -2);
-//	visual(process);
+		error_case(ERROR, -2);
+
 }
 static void get_commands(t_info	*process)
 {
@@ -115,22 +107,14 @@ int	main(int argc, char *argv[])
 {
 	t_info	*process;
 
-	if (argc < 2 || !valid_args(argc, argv))
+	if (argc < 2)
 		exit(0);
 	if (valid_args(argc, argv) == -1)
 		error_case(ERROR, -1);
 	process = NULL;
-	process = malloc(sizeof(t_info));
+	process = init_process(argc, argv);
 	if (!process)
 		error_case(MALLOCERROR, -1);
-	process->operations = NULL;
-	process->last_op = NULL;
-	process->head_a = NULL;
-	process->head_b = NULL;
-	form_stack(&(process->head_a), argc, argv);
-	if (argc == 2)
-		argc = count_digits(argv[1], ' ') + 1;
-	position_in_sorted_list(&(process->head_a), argc);
 	get_commands(process);
 	if (sorted(process->head_a) && !process->head_b)
 		write(1, "OK\n", 3);

@@ -19,54 +19,6 @@ void	pick_up_algorithm(t_info *process)
 		huge_sort(process);
 }
 
-void	visual(t_info *process)
-{
-	t_stack	*a = NULL;
-	t_stack	*b = NULL;
-
-//	a = process->head_a;
-//	b = process->head_b;
-//	printf("\nA: ");
-//	while (a)
-//	{
-//		printf("%-2d-> ", a->pos);
-//		if (a->next)
-//			printf("%-2d| ", a->next->pos);
-//		else
-//			printf("%s| ", "NULL");
-//		a = a->next;
-//	}
-//	printf("\nB: ");
-//	while (b)
-//	{
-//		printf("%-2d-> ", b->pos);
-//		if (b->next)
-//			printf("%-2d| ", b->next->pos);
-//		else
-//			printf("%s| ", "NULL");
-//		b = b->next;
-//	}
-//	printf("\n");
-	a = process->head_a;
-	b = process->head_b;
-	printf("\nA: ");
-	while (a)
-	{
-		printf("%d) \033[1;32m%-2d \033[0m", a->index, a->pos);
-//		printf(" (tb: %d, tt: %d, b: %d)      ", a->steps, a->total_moves, a->been_moved);
-		a = a->next;
-	}
-	printf("\nB: ");
-	while (b)
-	{
-		printf("%d) \033[1;32m%-2d \033[0m", b->index, b->pos);
-//		printf(" (tb: %d, tt: %d)      ", b->steps, b->total_moves);
-		b = b->next;
-	}
-	printf("\n");
-
-}
-
 int	main(int argc, char *argv[])
 {
 	t_info	*process;
@@ -85,5 +37,4 @@ int	main(int argc, char *argv[])
 		ft_strlen(process->operations->command));
 		process->operations = process->operations->next;
 	}
-//	visual(process);
 }
