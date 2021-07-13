@@ -1,29 +1,5 @@
-#include "../push_swap.h"
+#include "includes/push_swap.h"
 #include "../libft/libft.h"
-
-int	count_digits(char const *s, char c)
-{
-	int	count;
-	int	i;
-	int	k;
-
-	count = 0;
-	i = 0;
-	if (!ft_strchr(s, c))
-		return (1);
-	while (s[i])
-	{
-		k = 0;
-		while (s[i] != '\0' && s[i] == c)
-			i++;
-		while (s[i + k] != '\0' && s[i + k] != c)
-			k++;
-		if (k > 0)
-			count++;
-		i += k;
-	}
-	return (count);
-}
 
 static int	check(int argc, char *argv[], int pairs, int start);
 
@@ -32,7 +8,7 @@ static int	check(int argc, char *argv[], int pairs, int start);
  * @param argc : count of values
  * @param argv : pointer
  * @return 1 : OK
- * @return 0 : invalid symbols
+ * @return -1 : invalid symbols
  * @return 0 : doubles/bigger or smaller than int
  */
 int	valid_args(int argc, char *argv[])
@@ -72,16 +48,15 @@ static int	check(int argc, char *argv[], int pairs, int start)
 		{
 			if (j == 0 && (argv[i][j] == '-' || argv[i][j] == '+'))
 				continue ;
-			else if (!ft_isdigit(argv[i][j]))
+			else if (!ft_isdigit(argv[i][j]) || ft_atoi(argv[i]) > 2147483647 || \
+				ft_atoi(argv[i]) < -2147483648)
 				return (-1);
 		}
 		if (argc > 1 && ft_atoi(argv[i]) < ft_atoi(argv[i + 1]))
 			pairs--;
-		j = start;
+		j = -1;
 		while (++j < i)
-			if (ft_atoi(argv[i]) > 2147483647 || \
-				ft_atoi(argv[i]) < -2147483648 || \
-				ft_atoi(argv[j]) == ft_atoi(argv[i]))
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (-1);
 	}
 	return (pairs != 0);

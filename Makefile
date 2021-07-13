@@ -5,12 +5,17 @@ NAME =		push_swap
 INCLUDES =	./
 VPATH =     libft \
 			files \
+			includes \
+			files/checker \
             files/algorithm \
             files/stack_manipulations
 
 HEADERS	=	push_swap.h \
-			libft/libft.h
+			libft/libft.h \
+			get_next_line.h
 LIBRARY	=	libft/libft.a
+
+#--------------------FILES--------------------------/
 
 FILES = 	push_swap.c \
 			input_checker.c \
@@ -22,6 +27,19 @@ FILES = 	push_swap.c \
 			tools.c \
 			utils.c
 O_FILES = 	$(addprefix objects/, $(FILES:.c=.o))
+
+#-------------------BONUS-FILES
+
+B_FILES =	input_checker.c \
+			utils.c \
+			operations.c \
+			double_operations.c \
+			forming.c \
+			checker.c \
+			get_next_line.c \
+			get_next_line_utils.c \
+
+B_O_FILES = $(addprefix objects/, $(B_FILES:.c=.o))
 
 #-----------ADDITIONAL--------------------------------/
 
@@ -38,6 +56,7 @@ P4 =		\033[38;2;100;74;240
 
 
 all	:		$(NAME)
+bonus:		objects $(B_O_FILES) checker
 
 $(NAME) :	objects $(O_FILES) $(LIBRARY)
 			@$(CC) $(FLAGS) $(O_FILES) $(LIBRARY) -o $(NAME)
@@ -53,6 +72,9 @@ $(NAME) :	objects $(O_FILES) $(LIBRARY)
 			@echo "  "
 			@echo "$(W);m                            [ press CMD+V and add stack A ]\n";
 			@printf %s ./$(NAME) | pbcopy
+
+checker: 	$(B_O_FILES) $(LIBRARY)
+			@$(CC) $(FLAGS) $(B_O_FILES) $(LIBRARY) -o checker
 
 objects :
 			@mkdir $@
@@ -75,5 +97,3 @@ fclean :	clean
 			@make fclean -C libft/
 
 re :        fclean all
-
-.PHONY =	all clean fclean re

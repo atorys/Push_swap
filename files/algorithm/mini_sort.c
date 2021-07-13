@@ -1,4 +1,4 @@
-#include "../../push_swap.h"
+#include "includes/push_swap.h"
 
 void	sort_just_two(t_info *process)
 {

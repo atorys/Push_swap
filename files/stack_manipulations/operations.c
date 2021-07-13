@@ -1,6 +1,4 @@
-#include "../../push_swap.h"
-#include "../../libft/libft.h"
-#include <stdio.h>
+#include "includes/push_swap.h"
 
 void	add_cmd(t_info **process, char *operation)
 {
@@ -8,26 +6,6 @@ void	add_cmd(t_info **process, char *operation)
 
 	if (!operation)
 		return ;
-	if ((*process)->operations && operation[0] == 'p')
-	{
-		if ((*process)->last_op->command[0] == 'p' && \
-		(*process)->last_op->command[1] != operation[1])
-		{
-			if ((*process)->last_op == (*process)->operations)
-			{
-				free((*process)->operations);
-				(*process)->operations = NULL;
-				(*process)->last_op = NULL;
-			}
-			else
-			{
-				(*process)->last_op = (*process)->last_op->prev;
-				free((*process)->last_op->next);
-				(*process)->last_op->next = NULL;
-			}
-			return ;
-		}
-	}
 	new = malloc(sizeof(t_cmd));
 	if (!new)
 		error_case(MALLOCERROR, -1);
@@ -83,18 +61,10 @@ void	rotate_s(t_stack **a, t_info **process, char *operation)
 			last = last->next;
 		last->next = (*a);
 		*a = (*a)->next;
-//		if (operation[1] == 'a')
-//			(*process)->tail_a = last->next;
-//		else
-//			(*process)->tail_b = last->next;
 		last->next->next = NULL;
 		add_cmd(process, operation);
 		indexing(a);
 	}
-//	if (operation[1] == 'a')
-//		(*process)->tail_a = last;
-//	else
-//		(*process)->tail_b = last;
 }
 
 /**
@@ -108,7 +78,7 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
 	t_stack	*last;
 	t_stack	*prelast;
 
-	if (!(*a))
+	if (!(*a) || !(*a)->next)
 		return ;
 	last = *a;
 	while (last->next != NULL)
@@ -117,10 +87,6 @@ void	reverse_rotate_s(t_stack **a, t_info **process, char *operation)
 	while (prelast->next != last)
 		prelast = prelast->next;
 	prelast->next = NULL;
-//	if (operation[2] == 'a')
-//		(*process)->tail_a = last->prev;
-//	else
-//		(*process)->tail_b = last->prev;
 	last->next = *a;
 	*a = last;
 	add_cmd(process, operation);
