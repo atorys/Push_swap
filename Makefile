@@ -91,9 +91,12 @@ objects/%.o :	%.c $(HEADERS)
 clean :
 			@rm -rf objects/
 			@make clean -C libft/
+			@echo "removing [objects] [libft/objects]"
 
 fclean :	clean
 			@rm -f $(NAME)
+			@rm -f checker
 			@make fclean -C libft/
+			@echo "removing [push_swap] [checker] [libft.a]"
 
 re :        fclean all

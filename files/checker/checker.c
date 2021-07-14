@@ -2,9 +2,9 @@
 #include "../../includes/get_next_line.h"
 #include "../../libft/libft.h"
 
-static int sorted(t_stack *a)
+static int	sorted(t_stack *a)
 {
-	unsigned int count;
+	unsigned int	count;
 
 	count = node_count(a) - 1;
 	while (a && a->next)
@@ -15,55 +15,8 @@ static int sorted(t_stack *a)
 	}
 	return (count == 0);
 }
-void	visual(t_info *process)
-{
-	t_stack	*a = NULL;
-	t_stack	*b = NULL;
 
-//	a = process->head_a;
-//	b = process->head_b;
-//	printf("\nA: ");
-//	while (a)
-//	{
-//		printf("%-2d-> ", a->pos);
-//		if (a->next)
-//			printf("%-2d| ", a->next->pos);
-//		else
-//			printf("%s| ", "NULL");
-//		a = a->next;
-//	}
-//	printf("\nB: ");
-//	while (b)
-//	{
-//		printf("%-2d-> ", b->pos);
-//		if (b->next)
-//			printf("%-2d| ", b->next->pos);
-//		else
-//			printf("%s| ", "NULL");
-//		b = b->next;
-//	}
-//	printf("\n");
-	a = process->head_a;
-	b = process->head_b;
-	printf("\nA: ");
-	while (a)
-	{
-		printf("%d) \033[1;32m%-2d \033[0m", a->index, a->pos);
-//		printf(" (tb: %d, tt: %d, b: %d)      ", a->steps, a->total_moves, a->been_moved);
-		a = a->next;
-	}
-	printf("\nB: ");
-	while (b)
-	{
-		printf("%d) \033[1;32m%-2d \033[0m", b->index, b->pos);
-//		printf(" (tb: %d, tt: %d)      ", b->steps, b->total_moves);
-		b = b->next;
-	}
-	printf("\n");
-
-}
-
-static void run_cmd(t_info	*process, char *cmd)
+static void	run_cmd(t_info	*process, char *cmd)
 {
 	if (!ft_strncmp(cmd, "sa", ft_strlen(cmd)))
 		swap_s(&process->head_a, &process, NULL);
@@ -89,11 +42,11 @@ static void run_cmd(t_info	*process, char *cmd)
 		rrr(&process->head_a, &process->head_b, &process);
 	else
 		error_case(ERROR, -2);
-
 }
-static void get_commands(t_info	*process)
+
+static void	get_commands(t_info	*process)
 {
-	char *line;
+	char	*line;
 
 	while (get_next_line(0, &line))
 	{

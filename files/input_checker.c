@@ -42,9 +42,9 @@ static int	check(int argc, char *argv[], int pairs, int start)
 	i = start;
 	while (argc-- > 1)
 	{
+		i++;
 		if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
 			return (-1);
-		i++;
 		j = -1;
 		while (argv[i][++j])
 		{

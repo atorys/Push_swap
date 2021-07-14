@@ -1,7 +1,6 @@
 #include "includes/push_swap.h"
 #include "../libft/libft.h"
 
-
 void	pick_up_algorithm(t_info *process)
 {
 	unsigned int	count;

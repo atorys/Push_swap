@@ -2,15 +2,13 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
 
-//# define ERROR "\033[0;33mError\033[0m\n"
 # define ERROR "Error\n"
 # define MALLOCERROR "\033[0;33mMalloc failed\033[0m\n"
 
 /**
- * prototype for node of doubly linked list
+ * prototype for node of linked list
  * @fields pos : position in sorted array
  * @fields index : index in current array
  * @fields steps : index in other array
@@ -58,14 +56,15 @@ void			error_case(char *message, int number);
 int				valid_args(int argc, char *argv[]);
 
 t_info			*init_process(int argc, char *argv[]);
-void 			form_stack(t_stack **head, int argc, char *argv[]);
+void			form_stack(t_stack **head, int argc, char *argv[]);
 void			position_in_sorted_list(t_stack **head, int argc);
 void			add_cmd(t_info **process, char *operation);
 
 unsigned int	node_count(t_stack *head);
 void			indexing(t_stack **head);
 int				count_digits(char const *s, char c);
-void			circulation(t_stack *moved_elem, t_stack	*head, t_info *process);
+void			circulation(t_stack *moved_elem, t_stack *head, \
+				t_info *process);
 int				count_steps(int curr_pos, t_stack *where_to_put);
 
 void			swap_s(t_stack **a, t_info **process, char *operation);
@@ -86,7 +85,5 @@ void			sort_three(t_info *process);
 void			sort_four(t_info *process, int min);
 void			sort_five(t_info *process);
 void			huge_sort(t_info *process);
-
-void			visual(t_info *process);
 
 #endif
