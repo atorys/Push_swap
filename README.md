@@ -10,50 +10,24 @@
           8P                                                                       8P
 ```
 
-<details> <summary> :pushpin: Navigation </summary>
-  
-## Navigation  
-- [Introduction to push_swap](#-Introduction-to-push_swap)
-  - [Set of instructions](##Set-of-instructions)
-  - [Rules](##Rules)
 
-</details>
+## Push_swap 
 
+ <img src="42.svg" width="20"> School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle.   
+[**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/23502/en.subject.pdf)  
 
-# Introduction to push_swap  <img src="42.svg" width="25" title="hover text">
-[![forthebadge ](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)   
+## Make
+use `make` rule to compile **push_swap** program  
+and `make bonus` to compile **checker** program
 
-42 School algorithm project **push_swap**: the aim is to sort data using only two stacks and a limited set of instructions.  Norminette codestyle. 
-
-[**subject.pdf**](https://cdn.intra.42.fr/pdf/pdf/23502/en.subject.pdf)
- 
- 
-___
-
-
+## Run
 ``` bash
-./push_swap ０ １ ２ ３ ４ ５ ６
+./push_swap ５ ３ ６ ０ ２ １ ４
+```
+``` 
+ARG="５ ３ ６ ０ ２ １ ４"; ./push_swap $ARG
 ```
 
 
-０ １ ２ ３ ４ ５ ６ 
 ___
-## Set of instructions
- **A:**  ­­­ ５  ­ １ ­ ３ ­ ４ ­ ２  
- **B:**  ­­­ is empty
-### **swap a / swap b:**  
-> **A:** `５⥂１` ­ ３ ­ ４ ­ ２  
-> **SA:** １ ­ ５ ­ ３ ­ ４ ­ ２  
-swap first two elements at the top of choosen stack  
-
-### push b:
-> **A:**  `..` ５ ­ ３ ­ ４ ­２  
-> **B:**  `１`
-
-### rotate a
-> **A:** `５` ­ ３ ­ ４ ­ ２    
-> **RA:** ３ ­ ４ ­ ２ ­ `５` 
-
-___
-
-## Rules
+[![forthebadge ](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)  
