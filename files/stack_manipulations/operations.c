@@ -33,9 +33,9 @@ void	swap_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*second;
 
-	second = (*a)->next;
 	if (*a && (*a)->next)
 	{
+		second = (*a)->next;
 		(*a)->next = second->next;
 		second->next = *a;
 		*a = second;
@@ -54,17 +54,16 @@ void	rotate_s(t_stack **a, t_info **process, char *operation)
 {
 	t_stack	*last;
 
+	if (!(*a) || !(*a)->next)
+		return ;
 	last = *a;
-	if (*a && (*a)->next)
-	{
-		while (last->next != NULL)
-			last = last->next;
-		last->next = (*a);
-		*a = (*a)->next;
-		last->next->next = NULL;
-		add_cmd(process, operation);
-		indexing(a);
-	}
+	while (last->next != NULL)
+		last = last->next;
+	last->next = (*a);
+	*a = (*a)->next;
+	last->next->next = NULL;
+	add_cmd(process, operation);
+	indexing(a);
 }
 
 /**
